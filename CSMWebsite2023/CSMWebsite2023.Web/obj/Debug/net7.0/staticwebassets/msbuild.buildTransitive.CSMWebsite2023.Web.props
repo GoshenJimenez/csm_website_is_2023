@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CSMWebsite2023.Web.props" />
+</Project>
