@@ -52,7 +52,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
-# **/Properties/launchSettings.json
+**/Properties/launchSettings.json
 
 # StyleCop
 StyleCopReport.xml
@@ -328,3 +328,10 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/Source/Abcidee.SBDMC.Hermoor.Web/Migrations
+Source/Abcidee.SBDMC.Hermoor.Web/Areas/.DS_Store
+Source/Abcidee.SBDMC.Hermoor.Web/.DS_Store
+.DS_Store
+/Source/Abcidee.SBDMC.Hermoor.Web/documents/
+*/internal-nlog.txt
+/Source/Abcidee.SBDMC.Hermoor.Web/logs/
