@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CSMWebsite2023.Contracts\CSMWebsite2023.Contracts.csproj" />
+    <ProjectReference Include="..\CSMWebsite2023.MySql\CSMWebsite2023.MySql.csproj" />
+  </ItemGroup>
+
+</Project>
