@@ -1,4 +1,16 @@
 ﻿@page
-@model CSMWebsite2023.Web.Pages.Messages.IndexModel
+@model CSMWebsite2023.Web.Pages.Messages.Index
 @{
+}
+
+
+
+@{
+    if(Model.Chats != null)
+    {
+        foreach(var chat in Model.Chats)
+        {
+            <span>@chat.Name</span>
+        }   
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CSMWebsite2023.Contracts;
-using CSMWebsite2023.Contracts.Users;
+using CSMWebsite2023.Contracts.Chats;
 using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
 using Microsoft.Extensions.Configuration;
@@ -13,24 +13,24 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace Eos.Services
+namespace CSMWebsite2023.Services
 {
-    public class UserService : BaseService, IUserService
+    public class ChatService : BaseService, IChatService
     {
-        private readonly IRepository<User> _userRepository;
-        public UserService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
-              IRepository<User> userRepository
+        private readonly IRepository<Chat> _chatRepository;
+        public ChatService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
+              IRepository<Chat> chatRepository
             )
             : base(configuration, logger, mapper)
         {
-            _userRepository = userRepository;
+            _chatRepository = chatRepository;
         }
-        public List<UserDto>? GetUsers()
+        public List<ChatDto>? GetChats()
         {
-            var query = _userRepository.All();
+            var query = _chatRepository.All();
 
             return Mapper
-            .Map<List<UserDto>>(query);
+            .Map<List<ChatDto>>(query);
         }
     }
 }
