@@ -30,7 +30,42 @@ namespace CSMWebsite2023.EntityFramework
         {
             //List<User>? users = new List<User>();
 
+            List<Chat>? chats = new List<Chat>()
+            {
+                new Chat()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "School Friends Chat",
+                    UpdatedAt = DateTime.Now,
+                    CreatedAt = DateTime.Now,
+                },new Chat()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Family Chat",
+                    UpdatedAt = DateTime.Now,
+                    CreatedAt = DateTime.Now,
+                },new Chat()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "CIS 214 Chat",
+                    UpdatedAt = DateTime.Now,
+                    CreatedAt = DateTime.Now,
+                },new Chat()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "History Class Chat",
+                    UpdatedAt = DateTime.Now,
+                    CreatedAt = DateTime.Now,
+                },new Chat()
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Barcada Chat",
+                    UpdatedAt = DateTime.Now,
+                    CreatedAt = DateTime.Now,
+                }
+            };
 
+            modelBuilder.Entity<Chat>().HasData(chats);
         }
 
     }
