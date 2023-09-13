@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Manage\SchoolAds\" />
     <Folder Include="Pages\Manage\SchoolWall\" />
     <Folder Include="Pages\Manage\Researches\" />
   </ItemGroup>
