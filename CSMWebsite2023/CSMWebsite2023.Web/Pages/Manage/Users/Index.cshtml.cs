@@ -7,6 +7,7 @@ namespace CSMWebsite2023.Web.Manage.Users
     {
         public void OnGet()
         {
+               
         }
     }
 }
