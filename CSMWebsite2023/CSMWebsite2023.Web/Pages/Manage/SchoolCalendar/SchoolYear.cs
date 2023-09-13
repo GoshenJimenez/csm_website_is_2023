@@ -6,8 +6,8 @@
         public Guid? Month {  get; set; }
         public Guid? Day { get; set; }
         public Events?  Event {  get; set; }
-        public Semesters? Semesters { get; set; }
-        public Holidays? Holidays { get; set; }
-        public Exams? Exams { get; set; }
+        public Semesters? Semester { get; set; }
+        public Holidays? Holiday { get; set; }
+        public Exams? Exam { get; set; }
     }
 }

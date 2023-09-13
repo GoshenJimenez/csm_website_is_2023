@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Manage\SchoolCalendar\" />
     <Folder Include="Pages\Manage\SchoolAds\" />
     <Folder Include="Pages\Manage\SchoolWall\" />
     <Folder Include="Pages\Manage\Researches\" />
