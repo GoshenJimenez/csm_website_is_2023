@@ -7,15 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMWebsite2023.Web", "CSMWe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{DE784FAF-4097-4AA1-A72D-8B937D151039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSMWebsite2023.Contracts", "CSMWebsite2023.Contracts\CSMWebsite2023.Contracts.csproj", "{C8643E91-7A41-4D2C-B714-563B7F62CD1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMWebsite2023.Contracts", "CSMWebsite2023.Contracts\CSMWebsite2023.Contracts.csproj", "{C8643E91-7A41-4D2C-B714-563B7F62CD1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSMWebsite2023.Data", "CSMWebsite2023.Data\CSMWebsite2023.Data.csproj", "{94A8B5B7-0DE8-4D46-B185-4610FF1764C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMWebsite2023.Data", "CSMWebsite2023.Data\CSMWebsite2023.Data.csproj", "{94A8B5B7-0DE8-4D46-B185-4610FF1764C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSMWebsite2023.EntityFramework", "CSMWebsite2023.EntityFramework\CSMWebsite2023.EntityFramework.csproj", "{86F32438-304D-4800-AC9B-7AE718A16A8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMWebsite2023.EntityFramework", "CSMWebsite2023.EntityFramework\CSMWebsite2023.EntityFramework.csproj", "{86F32438-304D-4800-AC9B-7AE718A16A8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSMWebsite2023.MySql", "CSMWebsite2023.MySql\CSMWebsite2023.MySql.csproj", "{EFD2B0CD-5501-4B94-B145-D42DF0DB76CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMWebsite2023.MySql", "CSMWebsite2023.MySql\CSMWebsite2023.MySql.csproj", "{EFD2B0CD-5501-4B94-B145-D42DF0DB76CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSMWebsite2023.Services", "CSMWebsite2023.Services\CSMWebsite2023.Services.csproj", "{73AC4D26-9DAA-4A25-8264-D0118C75255F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSMWebsite2023.Services", "CSMWebsite2023.Services\CSMWebsite2023.Services.csproj", "{73AC4D26-9DAA-4A25-8264-D0118C75255F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

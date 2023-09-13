@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CSMWebsite2023.Services\CSMWebsite2023.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Manage\Researches\" />
+  </ItemGroup>
+
 </Project>
