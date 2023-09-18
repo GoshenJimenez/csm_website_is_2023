@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSMWebsite2023.EntityFramework.Migrations
 {
     [DbContext(typeof(DefaultDbContext))]
-    [Migration("20230911064550_init")]
+    [Migration("20230918063101_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -40,6 +40,43 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Chats");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c01"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8925),
+                            Name = "School Friends Chat",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8925)
+                        },
+                        new
+                        {
+                            Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c02"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8928),
+                            Name = "Family Chat",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8928)
+                        },
+                        new
+                        {
+                            Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8930),
+                            Name = "CIS 214 Chat",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8929)
+                        },
+                        new
+                        {
+                            Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c04"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8932),
+                            Name = "History Class Chat",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8931)
+                        },
+                        new
+                        {
+                            Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c05"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8934),
+                            Name = "Barcada Chat",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8933)
+                        });
                 });
 
             modelBuilder.Entity("CSMWebsite2023.Data.Models.ChatMedium", b =>
@@ -105,6 +142,24 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ChatMembers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b501"),
+                            ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8948),
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8947),
+                            UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00")
+                        },
+                        new
+                        {
+                            Id = new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b502"),
+                            ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8952),
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8952),
+                            UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01")
+                        });
                 });
 
             modelBuilder.Entity("CSMWebsite2023.Data.Models.ChatMessage", b =>
@@ -138,6 +193,26 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ChatMessages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050030"),
+                            ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8958),
+                            Message = "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8957),
+                            UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00")
+                        },
+                        new
+                        {
+                            Id = new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050031"),
+                            ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8961),
+                            Message = "Hello, Mauris condimentum urna vel diam gravida vulputate",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8961),
+                            UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01")
+                        });
                 });
 
             modelBuilder.Entity("CSMWebsite2023.Data.Models.ChatReaction", b =>
@@ -199,6 +274,26 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8914),
+                            EmailAddress = "etirel@mailinator.com",
+                            FirstName = "Elspeth",
+                            LastName = "Tirel",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8901)
+                        },
+                        new
+                        {
+                            Id = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
+                            CreatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8921),
+                            EmailAddress = "jbeleren@mailinator.com",
+                            FirstName = "Jace",
+                            LastName = "Beleren",
+                            UpdatedAt = new DateTime(2023, 9, 18, 14, 31, 1, 92, DateTimeKind.Local).AddTicks(8921)
+                        });
                 });
 
             modelBuilder.Entity("CSMWebsite2023.Data.Models.ChatMedium", b =>
