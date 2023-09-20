@@ -21,11 +21,22 @@
     if(Model.ChatMessage != null)
     {
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="..." alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">@(Model.ChatMessage.User.FirstName + " " + Model.ChatMessage.User.LastName)</h5>
+          <img class="card-img-top" src="/users/@(Model.ChatMessage.UserId).png" alt="Card image cap">
+          <div class="card-body">
+                <h5 class="card-title">@Model.ChatMessage.User.FirstName @Model.ChatMessage.User.LastName</h5>
                 <p class="card-text">@Model.ChatMessage.Message</p>
-            </div>
+          </div>
+          <div class="card-body">
+                @{
+                    foreach(var medium in Model.ChatMessage.ChatMedia)
+                    {
+                        if(medium.MediaType == Data.Enums.MediaType.ImageUrl)
+                        {
+                            <img class="card-img" src="/messages/@(Model.ChatMessage.Id)/@(medium.Value)" alt="">
+                        }
+                    }
+            }
+          </div>
         </div>
     }
 }

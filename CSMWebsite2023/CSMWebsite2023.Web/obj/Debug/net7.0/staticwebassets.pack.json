@@ -245,6 +245,18 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\Goshen\\Documents\\Personal\\CSMWebsite2023\\CSMWebsite2023\\CSMWebsite2023.Web\\wwwroot\\messages\\39c059ac-0cee-4daa-a8bd-2ee9d7050030\\attachment1.png",
+      "PackagePath": "staticwebassets\\messages\\39c059ac-0cee-4daa-a8bd-2ee9d7050030\\attachment1.png"
+    },
+    {
+      "Id": "C:\\Users\\Goshen\\Documents\\Personal\\CSMWebsite2023\\CSMWebsite2023\\CSMWebsite2023.Web\\wwwroot\\users\\91a4e383-5133-4675-ad4e-24ef11bb4c00.png",
+      "PackagePath": "staticwebassets\\users\\91a4e383-5133-4675-ad4e-24ef11bb4c00.png"
+    },
+    {
+      "Id": "C:\\Users\\Goshen\\Documents\\Personal\\CSMWebsite2023\\CSMWebsite2023\\CSMWebsite2023.Web\\wwwroot\\users\\91a4e383-5133-4675-ad4e-24ef11bb4c01.png",
+      "PackagePath": "staticwebassets\\users\\91a4e383-5133-4675-ad4e-24ef11bb4c01.png"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CSMWebsite2023.Web.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

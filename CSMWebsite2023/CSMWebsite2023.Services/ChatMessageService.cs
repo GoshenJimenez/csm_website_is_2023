@@ -21,12 +21,15 @@ namespace CSMWebsite2023.Services
     public class ChatMessageService : BaseService, IChatMessageService
     {
         private readonly IRepository<ChatMessage> _chatMessageRepository;
+        private readonly IRepository<ChatMedium> _chatMediaRepository;
         public ChatMessageService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
-              IRepository<ChatMessage> chatMessageRepository
+              IRepository<ChatMessage> chatMessageRepository,
+              IRepository<ChatMedium> chatMediaRepository
             )
             : base(configuration, logger, mapper)
         {
             _chatMessageRepository = chatMessageRepository;
+            _chatMediaRepository = chatMediaRepository;
         }
 
         public ChatMessageDto? GetChatMessage(Guid? id)
@@ -36,8 +39,13 @@ namespace CSMWebsite2023.Services
                     .Include(a => a.Chat)
                     .FirstOrDefault(a => a.Id == id);
 
-            return Mapper
-           .Map<ChatMessageDto>(query);
+            var result = Mapper.Map<ChatMessageDto>(query);
+
+            var media = _chatMediaRepository.All().Where(a => a.ChatMessageId == id).ToList();
+
+            result.ChatMedia = media;
+
+            return result;
         }
 
     }

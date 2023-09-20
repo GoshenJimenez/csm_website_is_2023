@@ -9,11 +9,13 @@ namespace CSMWebsite2023.Contracts.ChatMessages
 {
     public class ChatMessageDto
     {
+        public Guid? Id { get; set; }
         public Guid? ChatId { get; set; }
         public Chat? Chat { get; set; }
         public Guid? UserId { get; set; }
         public User? User { get; set; }
         public string? Message { get; set; }
         public Guid? ReplyToId { get; set; }
+        public List<ChatMedium>? ChatMedia { get; set; }
     }
 }
