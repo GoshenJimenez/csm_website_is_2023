@@ -25,6 +25,15 @@ namespace CSMWebsite2023.EntityFramework
         public DbSet<ChatReaction>? ChatReactions { get; set; }
         #endregion
 
+        #region SchoolPosts
+        public DbSet<SchoolPost>? SchoolPosts { get; set; }
+        public DbSet<SchoolPostComment>? SchoolPostComments { get; set; }
+        public DbSet<SchoolPostMedium>? SchoolPostMedia { get; set; }
+        public DbSet<SchoolPostReaction>? SchoolPostReactions { get; set; }
+        public DbSet<SchoolPostShare>? SchoolPostShares { get; set; }
+
+        #endregion
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -126,11 +135,36 @@ namespace CSMWebsite2023.EntityFramework
             };
 
 
+            List<SchoolPost> schoolPosts = new List<SchoolPost>()
+            {
+                new SchoolPost()
+                {
+                    Id = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
+                    Content = "TEST CONTENT",
+                    Title = "Title",
+                    UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
+                }
+            };
+
+            List<SchoolPostMedium> schoolPostMedia = new List<SchoolPostMedium> { 
+                new SchoolPostMedium()
+                {
+                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f28"),
+                    MediaType = Data.Enums.MediaType.ImageUrl,
+                    SchoolPostId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
+                    Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png"
+                } 
+            };
+
+
 
             modelBuilder.Entity<Chat>().HasData(chats);
             modelBuilder.Entity<User>().HasData(users);
             modelBuilder.Entity<ChatMember>().HasData(chatMembers);
             modelBuilder.Entity<ChatMessage>().HasData(chatMessages);
+
+            modelBuilder.Entity<SchoolPost>().HasData(schoolPosts);
+            modelBuilder.Entity<SchoolPostMedium>().HasData(schoolPostMedia);
         }
 
     }

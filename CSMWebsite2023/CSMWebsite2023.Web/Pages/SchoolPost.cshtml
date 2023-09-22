@@ -1,0 +1,29 @@
+﻿@page "/school-post/{id}"
+@model CSMWebsite2023.Web.Pages.SchoolPost
+@{
+}
+
+
+@{
+    if (Model.Post != null)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/users/@(Model.Post.UserId).png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Model.Post.User.FirstName @Model.Post.User.LastName</h5>
+                <p class="card-text">@Model.Post.Content</p>
+            </div>
+            <div class="card-body">
+                @{
+                    foreach (var medium in Model.Post.SchoolPostMedia)
+                    {
+                        if (medium.MediaType == Data.Enums.MediaType.ImageUrl)
+                        {
+                            <img class="card-img" src="@(medium.Value)" alt="">
+                        }
+                    }
+                }
+            </div>
+        </div>
+    }
+}

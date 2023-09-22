@@ -22,6 +22,7 @@
     <Folder Include="Pages\Manage\SchoolWall\" />
     <Folder Include="Pages\Manage\Researches\" />
     <Folder Include="wwwroot\messages\39c059ac-0cee-4daa-a8bd-2ee9d7050030\" />
+    <Folder Include="wwwroot\schoolposts\caf9cd32-5e33-451d-a756-cad109eabef2\" />
   </ItemGroup>
 
 </Project>
