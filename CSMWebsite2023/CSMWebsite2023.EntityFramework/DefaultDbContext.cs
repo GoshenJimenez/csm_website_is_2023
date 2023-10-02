@@ -43,6 +43,7 @@ namespace CSMWebsite2023.EntityFramework
         public DbSet<ResearchShare>? ResearchShares { get; set; }
         #endregion
 
+<<<<<<< HEAD
         #region Group
         public DbSet<Group>? Groups { get; set; }
         public DbSet<GroupMember>? GroupMembers { get; set; }
@@ -50,6 +51,14 @@ namespace CSMWebsite2023.EntityFramework
         public DbSet<GroupPost>? GroupPstComments { get; set; }
         public DbSet<GroupPostMedium>? GroupPostMedia { get; set; }
         public DbSet<GroupPost>? GroupPostReactions { get; set; }
+=======
+        #region SchoolAds
+        public DbSet<SchoolAds>? SchoolAds { get; set; }
+        public DbSet<AdComments>? AdComments { get; set; }
+        public DbSet<AdMedia>? AdMedium { get; set; }
+        public DbSet<AdReactions>? AdReactions { get; set; }
+        public DbSet<AdShares>? AdShares { get; set; }
+>>>>>>> ca32050 (register model Dbcontext)
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -182,6 +191,7 @@ namespace CSMWebsite2023.EntityFramework
                 }
             };
 
+<<<<<<< HEAD
             List<Group> groups = new List<Group> {
                 new Group()
                 {
@@ -189,6 +199,17 @@ namespace CSMWebsite2023.EntityFramework
                     Name = "Name",
                 }
             };
+=======
+            List<SchoolAds> schoolads = new List<SchoolAds> {
+                new SchoolAds()
+                {
+                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
+                    Title = "Title",
+                    Description = "Description",
+                }
+            };
+
+>>>>>>> ca32050 (register model Dbcontext)
 
             modelBuilder.Entity<Chat>().HasData(chats);
             modelBuilder.Entity<User>().HasData(users);
@@ -199,8 +220,15 @@ namespace CSMWebsite2023.EntityFramework
             modelBuilder.Entity<SchoolPostMedium>().HasData(schoolPostMedia);
 
             modelBuilder.Entity<Research>().HasData(researches);
+<<<<<<< HEAD
 
             modelBuilder.Entity<Group>().HasData(groups);
+=======
+            
+            modelBuilder.Entity<SchoolAds>().HasData(schoolads);
+
+
+>>>>>>> ca32050 (register model Dbcontext)
         }
 
     }
