@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Pages\Manage\Researches\" />
     <Folder Include="Pages\Manage\SchoolAds\" />
     <Folder Include="Pages\Manage\SchoolWall\" />
     <Folder Include="wwwroot\messages\39c059ac-0cee-4daa-a8bd-2ee9d7050030\" />
