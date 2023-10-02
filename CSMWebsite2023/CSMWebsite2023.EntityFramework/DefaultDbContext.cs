@@ -43,9 +43,18 @@ namespace CSMWebsite2023.EntityFramework
         public DbSet<ResearchShare>? ResearchShares { get; set; }
         #endregion
 
+        #region Group
+        public DbSet<Group>? Groups { get; set; }
+        public DbSet<GroupMember>? GroupMembers { get; set; }
+        public DbSet<GroupPost>? GroupPosts { get; set; }
+        public DbSet<GroupPost>? GroupPstComments { get; set; }
+        public DbSet<GroupPostMedium>? GroupPostMedia { get; set; }
+        public DbSet<GroupPost>? GroupPostReactions { get; set; }
+        #endregion
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            List<User>? users = new List<User>() { 
+            List<User>? users = new List<User>() {
                 new User()
                 {
                     Id = Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
@@ -154,25 +163,32 @@ namespace CSMWebsite2023.EntityFramework
                 }
             };
 
-            List<SchoolPostMedium> schoolPostMedia = new List<SchoolPostMedium> { 
+            List<SchoolPostMedium> schoolPostMedia = new List<SchoolPostMedium> {
                 new SchoolPostMedium()
                 {
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f28"),
                     MediaType = Data.Enums.MediaType.ImageUrl,
                     SchoolPostId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
                     Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png"
-                } 
+                }
             };
 
-            List<Research> researches = new List<Research> { 
+            List<Research> researches = new List<Research> {
                 new Research()
-                {      
+                {
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
                     Title = "Title",
                     Abstract = "Abstract",
                 }
             };
 
+            List<Group> groups = new List<Group> {
+                new Group()
+                {
+                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f32"),
+                    Name = "Name",
+                }
+            };
 
             modelBuilder.Entity<Chat>().HasData(chats);
             modelBuilder.Entity<User>().HasData(users);
@@ -183,6 +199,8 @@ namespace CSMWebsite2023.EntityFramework
             modelBuilder.Entity<SchoolPostMedium>().HasData(schoolPostMedia);
 
             modelBuilder.Entity<Research>().HasData(researches);
+
+            modelBuilder.Entity<Group>().HasData(groups);
         }
 
     }
