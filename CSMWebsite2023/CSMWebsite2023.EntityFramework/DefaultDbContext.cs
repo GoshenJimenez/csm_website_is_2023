@@ -34,6 +34,14 @@ namespace CSMWebsite2023.EntityFramework
 
         #endregion
 
+        #region Researches
+        public DbSet<Research>? Researches { get; set; }
+        public DbSet<ResearchAuthor>? ResearchAuthors { get; set; }
+        public DbSet<ResearchComment>? ResearchComments { get; set; }
+        public DbSet<ResearchMedium>? ResearchMedia { get; set; }
+        public DbSet<ResearchReaction>? ResearchReactions { get; set; }
+        public DbSet<ResearchShare>? ResearchShares { get; set; }
+        #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -156,6 +164,14 @@ namespace CSMWebsite2023.EntityFramework
                 } 
             };
 
+            List<Research> researches = new List<Research> { 
+                new Research()
+                {      
+                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
+                    Title = "Title",
+                    Abstract = "Abstract",
+                }
+            };
 
 
             modelBuilder.Entity<Chat>().HasData(chats);
@@ -165,6 +181,8 @@ namespace CSMWebsite2023.EntityFramework
 
             modelBuilder.Entity<SchoolPost>().HasData(schoolPosts);
             modelBuilder.Entity<SchoolPostMedium>().HasData(schoolPostMedia);
+
+            modelBuilder.Entity<Research>().HasData(researches);
         }
 
     }
