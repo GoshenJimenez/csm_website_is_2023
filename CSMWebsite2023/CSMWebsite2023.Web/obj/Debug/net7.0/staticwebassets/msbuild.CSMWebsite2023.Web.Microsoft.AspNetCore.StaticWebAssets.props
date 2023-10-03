@@ -992,6 +992,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\messages\39c059ac-0cee-4daa-a8bd-2ee9d7050030\attachment1.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\schoolposts\caf9cd32-5e33-451d-a756-cad109eabef2\main.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>CSMWebsite2023.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CSMWebsite2023.Web</BasePath>
+      <RelativePath>schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\schoolposts\caf9cd32-5e33-451d-a756-cad109eabef2\main.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\users\91a4e383-5133-4675-ad4e-24ef11bb4c00.png))">
       <SourceType>Package</SourceType>
       <SourceId>CSMWebsite2023.Web</SourceId>
