@@ -53,11 +53,11 @@ namespace CSMWebsite2023.EntityFramework
         #endregion
 
         #region SchoolAds
-        public DbSet<SchoolAds>? SchoolAds { get; set; }
-        public DbSet<AdComments>? AdComments { get; set; }
-        public DbSet<AdMedia>? AdMedium { get; set; }
-        public DbSet<AdReactions>? AdReactions { get; set; }
-        public DbSet<AdShares>? AdShares { get; set; }
+        public DbSet<SchoolAd>? SchoolAds { get; set; }
+        public DbSet<AdComment>? AdComments { get; set; }
+        public DbSet<AdMedium>? AdMedia { get; set; }
+        public DbSet<AdReaction>? AdReactions { get; set; }
+        public DbSet<AdShare>? AdShares { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -199,8 +199,8 @@ namespace CSMWebsite2023.EntityFramework
                 }
             };
 
-            List<SchoolAds> schoolads = new List<SchoolAds> {
-                new SchoolAds()
+            List<SchoolAd> schoolads = new List<SchoolAd> {
+                new SchoolAd()
                 {
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
                     Title = "Title",
@@ -225,7 +225,7 @@ namespace CSMWebsite2023.EntityFramework
             modelBuilder.Entity<Group>().HasData(groups);
 
             
-            modelBuilder.Entity<SchoolAds>().HasData(schoolads);
+            modelBuilder.Entity<SchoolAd>().HasData(schoolads);
 
 
         }
