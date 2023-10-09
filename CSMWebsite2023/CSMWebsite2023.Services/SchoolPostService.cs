@@ -29,7 +29,7 @@ namespace CSMWebsite2023.Services
             _schoolPostMediaRepository = schoolPostMediaRepository;
         }
 
-        public SchoolPostDto? GetSchoolPost(Guid? id)
+        public SchoolPostDto? GetSchoolPostById(Guid? id)
         {
             var query = _schoolPostRepository.All()
                          .Include(a => a.User)

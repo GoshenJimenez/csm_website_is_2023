@@ -9,6 +9,6 @@ namespace CSMWebsite2023.Contracts.SchoolPosts
 {
     public interface ISchoolPostService : IService
     {
-        SchoolPostDto? GetSchoolPost(Guid? id);
+        SchoolPostDto? GetSchoolPostById(Guid? id);
     }
 }
