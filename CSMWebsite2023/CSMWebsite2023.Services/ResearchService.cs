@@ -46,7 +46,9 @@ namespace CSMWebsite2023.Services
 
         public List<ResearchDto>? GetResearches()
         {
-            throw new NotImplementedException();
+            var query = _researchRepository.All();
+
+            return Mapper.Map<List<ResearchDto>>(query);
         }
     }
 }
