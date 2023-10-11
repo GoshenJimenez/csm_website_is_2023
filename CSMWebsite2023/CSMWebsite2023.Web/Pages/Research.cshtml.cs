@@ -1,25 +1,26 @@
 using CSMWebsite2023.Contracts.ChatMessages;
 using CSMWebsite2023.Contracts.Chats;
+using CSMWebsite2023.Contracts.Researches;
 using CSMWebsite2023.Contracts.SchoolPosts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace CSMWebsite2023.Web.Pages
 {
-    public class SchoolPost : PageModel
+    public class Research : PageModel
     {
-        public readonly ISchoolPostService _schoolPostService;
-        public SchoolPost(ISchoolPostService schoolPostService)
+        public readonly IResearchService _researchService;
+        public Research(IResearchService researchService)
         {
-            _schoolPostService = schoolPostService;
+            _researchService = researchService;
         }
 
         public void OnGet(Guid? id = null)
         {
             //Chats = _chatService.GetChats();
-            Post = _schoolPostService.GetSchoolPostById(id);
+            ResearchItem = _researchService.GetResearchById(id);
         }
 
-        public SchoolPostDto? Post { get; set; }
+        public ResearchDto? ResearchItem { get; set; }
     }
 }
