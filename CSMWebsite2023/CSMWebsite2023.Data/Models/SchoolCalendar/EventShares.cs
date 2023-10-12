@@ -8,4 +8,6 @@ namespace CSMWebsite2023.Data.Models
         public User? User { get; set; }
         public Guid? EventId { get; set; }
         public Event? Event { get; set; }
+    }
 }
+

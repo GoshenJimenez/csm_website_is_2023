@@ -10,6 +10,8 @@ namespace CSMWebsite2023.EntityFramework
 {
     public class DefaultDbContext : DbContext
     {
+        private SchoolCalendar[] schoolcalendar;
+
         public DefaultDbContext(DbContextOptions options)
             : base(options)
         {
@@ -58,6 +60,14 @@ namespace CSMWebsite2023.EntityFramework
         public DbSet<AdMedium>? AdMedia { get; set; }
         public DbSet<AdReaction>? AdReactions { get; set; }
         public DbSet<AdShare>? AdShares { get; set; }
+        #endregion
+
+        #region SchoolEvents
+        public DbSet<SchoolEvent>? SchoolEvents { get; set; }
+        public DbSet<EventComment>? EventComments { get; set; }
+        public DbSet<EventMedium>? EventMedia { get; set; }
+        public DbSet<EventReaction>? EventReactions { get; set; }
+        public DbSet<EventShare>? EventShares { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -202,12 +212,21 @@ namespace CSMWebsite2023.EntityFramework
             List<SchoolAd> schoolads = new List<SchoolAd> {
                 new SchoolAd()
                 {
-                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
+                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f34"),
                     Title = "Title",
                     Description = "Description",
                 }
             };
-            
+
+            List<SchoolEvents> schoolcalendar = new List<SchoolEvents> {
+                new SchoolEvents()
+                {
+                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
+                    Title = "Title",
+                    Description = "Description",
+                    EventDate = "EventDate",
+                }
+            };
 
 
 
@@ -227,6 +246,7 @@ namespace CSMWebsite2023.EntityFramework
             
             modelBuilder.Entity<SchoolAd>().HasData(schoolads);
 
+            modelBuilder.Entity<SchoolEvents>().HasData(schoolcalendar);
 
         }
 

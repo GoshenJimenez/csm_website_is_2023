@@ -9,8 +9,8 @@ namespace CSMWebsite2023.Web.Pages
 {
     public class Research : PageModel
     {
-        public readonly IResearchService _researchService;
-        public Research(IResearchService researchService)
+        public readonly ISchoolCalendarService _researchService;
+        public Research(ISchoolCalendarService researchService)
         {
             _researchService = researchService;
         }
@@ -21,6 +21,6 @@ namespace CSMWebsite2023.Web.Pages
             ResearchItem = _researchService.GetResearchById(id);
         }
 
-        public ResearchDto? ResearchItem { get; set; }
+        public SchoolCalendarDto? ResearchItem { get; set; }
     }
 }
