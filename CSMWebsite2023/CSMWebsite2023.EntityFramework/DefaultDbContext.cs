@@ -54,11 +54,11 @@ namespace CSMWebsite2023.EntityFramework
         #endregion
 
         #region SchoolAds
-        public DbSet<SchoolAd>? SchoolAds { get; set; }
-        public DbSet<AdComment>? AdComments { get; set; }
-        public DbSet<AdMedium>? AdMedia { get; set; }
-        public DbSet<AdReaction>? AdReactions { get; set; }
-        public DbSet<AdShare>? AdShares { get; set; }
+        public DbSet<SchoolAds>? SchoolAds { get; set; }
+        public DbSet<SchoolAdsComment>? AdComments { get; set; }
+        public DbSet<SchoolAdsMedium>? AdMedia { get; set; }
+        public DbSet<SchoolAdsReaction>? AdReactions { get; set; }
+        public DbSet<SchoolAdShare>? AdShares { get; set; }
         #endregion
 
         #region SchoolEvents
@@ -208,8 +208,8 @@ namespace CSMWebsite2023.EntityFramework
                 }
             };
 
-            List<SchoolAd> schoolads = new List<SchoolAd> {
-                new SchoolAd()
+            List<SchoolAds> schoolads = new List<SchoolAds> {
+                new SchoolAds()
                 {
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f34"),
                     Title = "Title",
@@ -256,7 +256,7 @@ namespace CSMWebsite2023.EntityFramework
             modelBuilder.Entity<Group>().HasData(groups);
 
             
-            modelBuilder.Entity<SchoolAd>().HasData(schoolads);
+            modelBuilder.Entity<SchoolAds>().HasData(schoolads);
 
 
             modelBuilder.Entity<SchoolEvent>().HasData(schoolCalendar);

@@ -1,0 +1,18 @@
+﻿@page "/schoolads/{id}"
+@model CSMWebsite2023.Web.Pages.SchoolAds
+@{
+}
+
+
+@{
+    if (Model.SchoolAdsItem != null)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="@(Model.SchoolAdsItem.ArticleImage)" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Model.SchoolAdsItem.Title</h5>
+                <p class="card-text">@Model.SchoolAdsItem.Description</p>
+            </div>
+        </div>
+    }
+}
