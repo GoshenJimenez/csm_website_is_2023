@@ -1,0 +1,18 @@
+﻿@page "/school-event/{id}"
+@model CSMWebsite2023.Web.Pages.SchoolEvent
+@{
+}
+
+
+@{
+    if (Model.SchoolEventItem != null)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="@(Model.SchoolEventItem.ArticleImage)" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Model.SchoolEventItem.Title</h5>
+                <p class="card-text">@Model.SchoolEventItem.Description</p>
+            </div>
+        </div>
+    }
+}

@@ -9,7 +9,7 @@ namespace CSMWebsite2023.Contracts.SchoolEvents
 {
     public interface ISchoolEventService : IService
     {
-        List<SchoolEventsDto>? GetSchoolEvents();
-        SchoolEventsDto? GetSchoolEventsById(Guid? id);
+        List<SchoolEventDto>? GetSchoolEvents();
+        SchoolEventDto? GetSchoolEventById(Guid? id);
     }
 }

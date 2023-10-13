@@ -10,7 +10,6 @@ namespace CSMWebsite2023.EntityFramework
 {
     public class DefaultDbContext : DbContext
     {
-        private SchoolCalendar[] schoolcalendar;
 
         public DefaultDbContext(DbContextOptions options)
             : base(options)
@@ -64,10 +63,10 @@ namespace CSMWebsite2023.EntityFramework
 
         #region SchoolEvents
         public DbSet<SchoolEvent>? SchoolEvents { get; set; }
-        public DbSet<EventComment>? EventComments { get; set; }
-        public DbSet<EventMedium>? EventMedia { get; set; }
-        public DbSet<EventReaction>? EventReactions { get; set; }
-        public DbSet<EventShare>? EventShares { get; set; }
+        public DbSet<SchoolEventComment>? SchoolEventComments { get; set; }
+        public DbSet<SchoolEventMedium>? SchoolEventMedia { get; set; }
+        public DbSet<SchoolEventReaction>? SchoolEventReactions { get; set; }
+        public DbSet<SchoolEventShare>? SchoolEventShares { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -218,13 +217,13 @@ namespace CSMWebsite2023.EntityFramework
                 }
             };
 
-            List<SchoolEvents> schoolcalendar = new List<SchoolEvents> {
-                new SchoolEvents()
+            List<SchoolEvent> schoolCalendar = new List<SchoolEvent> {
+                new SchoolEvent()
                 {
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
-                    Title = "Title",
-                    Description = "Description",
-                    EventDate = "EventDate",
+                    Title = "Acquaintance Party",
+                    Description = "A party for students to get to get to know one another",
+                    Date = DateTime.Now.AddMonths(1)
                 }
             };
 
@@ -246,7 +245,7 @@ namespace CSMWebsite2023.EntityFramework
             
             modelBuilder.Entity<SchoolAd>().HasData(schoolads);
 
-            modelBuilder.Entity<SchoolEvents>().HasData(schoolcalendar);
+            modelBuilder.Entity<SchoolEvent>().HasData(schoolCalendar);
 
         }
 
