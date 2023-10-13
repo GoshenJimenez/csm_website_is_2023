@@ -819,11 +819,11 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                 columns: new[] { "Id", "CreatedAt", "Name", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c01"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8810), "School Friends Chat", new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8809) },
-                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c02"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8813), "Family Chat", new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8813) },
-                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8816), "CIS 214 Chat", new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8815) },
-                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c04"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8854), "History Class Chat", new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8854) },
-                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c05"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8857), "Barcada Chat", new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8856) }
+                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c01"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2658), "School Friends Chat", new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2657) },
+                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c02"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2660), "Family Chat", new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2660) },
+                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2663), "CIS 214 Chat", new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2662) },
+                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c04"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2665), "History Class Chat", new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2664) },
+                    { new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c05"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2667), "Barcada Chat", new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2666) }
                 });
 
             migrationBuilder.InsertData(
@@ -844,15 +844,15 @@ namespace CSMWebsite2023.EntityFramework.Migrations
             migrationBuilder.InsertData(
                 table: "SchoolEvents",
                 columns: new[] { "Id", "CreatedAt", "Date", "Description", "Title", "UpdatedAt" },
-                values: new object[] { new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f36"), null, new DateTime(2023, 11, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8904), "A party for students to get to get to know one another", "Acquaintance Party", null });
+                values: new object[] { new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f36"), null, new DateTime(2023, 11, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2718), "A party for students to get to get to know one another", "Acquaintance Party", null });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "CreatedAt", "EmailAddress", "FirstName", "LastName", "UpdatedAt" },
                 values: new object[,]
                 {
-                    { new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8799), "etirel@mailinator.com", "Elspeth", "Tirel", new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8789) },
-                    { new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8806), "jbeleren@mailinator.com", "Jace", "Beleren", new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8806) }
+                    { new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2645), "etirel@mailinator.com", "Elspeth", "Tirel", new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2633) },
+                    { new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2654), "jbeleren@mailinator.com", "Jace", "Beleren", new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2653) }
                 });
 
             migrationBuilder.InsertData(
@@ -860,8 +860,8 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                 columns: new[] { "Id", "ChatId", "CreatedAt", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b501"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8866), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8865), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00") },
-                    { new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b502"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8869), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8869), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01") }
+                    { new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b501"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2677), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2677), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00") },
+                    { new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b502"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2681), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2680), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01") }
                 });
 
             migrationBuilder.InsertData(
@@ -869,9 +869,14 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                 columns: new[] { "Id", "ChatId", "CreatedAt", "Message", "ReplyToId", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050030"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8877), "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.", null, new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8877), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00") },
-                    { new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050031"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8881), "Hello, Mauris condimentum urna vel diam gravida vulputate", null, new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8880), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01") }
+                    { new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050030"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2686), "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.", null, new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2686), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00") },
+                    { new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050031"), new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"), new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2690), "Hello, Mauris condimentum urna vel diam gravida vulputate", null, new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2690), new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01") }
                 });
+
+            migrationBuilder.InsertData(
+                table: "SchoolEventMedia",
+                columns: new[] { "Id", "CreatedAt", "MediaType", "SchoolEventId", "UpdatedAt", "UserId", "Value" },
+                values: new object[] { new Guid("7ff3f13c-3cff-40d0-89ab-1e81831eb34a"), null, 3, new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f36"), null, null, "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg" });
 
             migrationBuilder.InsertData(
                 table: "SchoolPosts",

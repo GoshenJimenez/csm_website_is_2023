@@ -227,6 +227,17 @@ namespace CSMWebsite2023.EntityFramework
                 }
             };
 
+            List<SchoolEventMedium> schoolEventMedia = new List<SchoolEventMedium>()
+            {
+                new SchoolEventMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolEventId = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
+                    MediaType = Data.Enums.MediaType.ArticleImage,
+                    Value = "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg"
+                }
+            };
+
 
 
             modelBuilder.Entity<Chat>().HasData(chats);
@@ -234,8 +245,10 @@ namespace CSMWebsite2023.EntityFramework
             modelBuilder.Entity<ChatMember>().HasData(chatMembers);
             modelBuilder.Entity<ChatMessage>().HasData(chatMessages);
 
+
             modelBuilder.Entity<SchoolPost>().HasData(schoolPosts);
             modelBuilder.Entity<SchoolPostMedium>().HasData(schoolPostMedia);
+
 
             modelBuilder.Entity<Research>().HasData(researches);
 
@@ -245,7 +258,9 @@ namespace CSMWebsite2023.EntityFramework
             
             modelBuilder.Entity<SchoolAd>().HasData(schoolads);
 
+
             modelBuilder.Entity<SchoolEvent>().HasData(schoolCalendar);
+            modelBuilder.Entity<SchoolEventMedium>().HasData(schoolEventMedia);
 
         }
 

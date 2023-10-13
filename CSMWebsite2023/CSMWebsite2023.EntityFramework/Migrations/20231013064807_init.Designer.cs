@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSMWebsite2023.EntityFramework.Migrations
 {
     [DbContext(typeof(DefaultDbContext))]
-    [Migration("20231013063712_init")]
+    [Migration("20231013064807_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -168,37 +168,37 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c01"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8810),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2658),
                             Name = "School Friends Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8809)
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2657)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c02"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8813),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2660),
                             Name = "Family Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8813)
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2660)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8816),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2663),
                             Name = "CIS 214 Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8815)
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2662)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c04"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8854),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2665),
                             Name = "History Class Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8854)
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2664)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c05"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8857),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2667),
                             Name = "Barcada Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8856)
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2666)
                         });
                 });
 
@@ -271,16 +271,16 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         {
                             Id = new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b501"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8866),
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8865),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2677),
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2677),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00")
                         },
                         new
                         {
                             Id = new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b502"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8869),
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8869),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2681),
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2680),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01")
                         });
                 });
@@ -322,18 +322,18 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         {
                             Id = new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050030"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8877),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2686),
                             Message = "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8877),
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2686),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00")
                         },
                         new
                         {
                             Id = new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050031"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8881),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2690),
                             Message = "Hello, Mauris condimentum urna vel diam gravida vulputate",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8880),
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2690),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01")
                         });
                 });
@@ -732,7 +732,7 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
-                            Date = new DateTime(2023, 11, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8904),
+                            Date = new DateTime(2023, 11, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2718),
                             Description = "A party for students to get to get to know one another",
                             Title = "Acquaintance Party"
                         });
@@ -802,6 +802,15 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("SchoolEventMedia");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("7ff3f13c-3cff-40d0-89ab-1e81831eb34a"),
+                            MediaType = 3,
+                            SchoolEventId = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
+                            Value = "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg"
+                        });
                 });
 
             modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolEventReaction", b =>
@@ -1051,20 +1060,20 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8799),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2645),
                             EmailAddress = "etirel@mailinator.com",
                             FirstName = "Elspeth",
                             LastName = "Tirel",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8789)
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2633)
                         },
                         new
                         {
                             Id = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8806),
+                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2654),
                             EmailAddress = "jbeleren@mailinator.com",
                             FirstName = "Jace",
                             LastName = "Beleren",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 37, 11, 905, DateTimeKind.Local).AddTicks(8806)
+                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2653)
                         });
                 });
 

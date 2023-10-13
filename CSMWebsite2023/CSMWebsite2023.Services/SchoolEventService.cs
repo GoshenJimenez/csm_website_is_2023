@@ -35,7 +35,7 @@ namespace CSMWebsite2023.Services
 
             var result = Mapper.Map<SchoolEventDto>(query);
 
-            var image = _schoolEventMediumRepository.All().Where(a => a.SchoolEventId == id && a.MediaType == Data.Enums.MediaType.ImageUrl).FirstOrDefault();
+            var image = _schoolEventMediumRepository.All().Where(a => a.SchoolEventId == id && a.MediaType == Data.Enums.MediaType.ArticleImage).FirstOrDefault();
 
             if (image != null)
             {
