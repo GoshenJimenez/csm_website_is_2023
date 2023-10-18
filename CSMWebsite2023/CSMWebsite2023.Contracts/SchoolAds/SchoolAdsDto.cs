@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSMWebsite2023.Contracts.SchoolAds
 {
-    public class SchoolAdsDto
+    public class SchoolAdDto
     {
         public Guid? Id { get; set; }
         public string? Title { get; set; }

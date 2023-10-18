@@ -14,13 +14,13 @@ using System.Threading.Tasks;
 
 namespace CSMWebsite2023.Services
 {
-    public class SchoolAdsService : BaseService, ISchoolAdsService
+    public class SchoolAdsService : BaseService, ISchoolAdService
     {
-        private readonly IRepository<SchoolAds> _schooladsRepository;
-        private readonly IRepository<SchoolAdsMedium> _schooladsMediumRepository;
+        private readonly IRepository<SchoolAd> _schooladsRepository;
+        private readonly IRepository<SchoolAdMedium> _schooladsMediumRepository;
         public SchoolAdsService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
-              IRepository<SchoolAds> schooladsRepository,
-              IRepository<SchoolAdsMedium> schooladsMediumRepository
+              IRepository<SchoolAd> schooladsRepository,
+              IRepository<SchoolAdMedium> schooladsMediumRepository
             )
             : base(configuration, logger, mapper)
         {
@@ -28,12 +28,12 @@ namespace CSMWebsite2023.Services
             _schooladsMediumRepository = schooladsMediumRepository;
         }
 
-        public SchoolAdsDto? GetSchoolAdById(Guid? id)
+        public SchoolAdDto? GetSchoolAdById(Guid? id)
         {
             var query = _schooladsRepository.All()
                          .FirstOrDefault(a => a.Id == id);
 
-            var result = Mapper.Map<SchoolAdsDto>(query);
+            var result = Mapper.Map<SchoolAdDto>(query);
 
             var image = _schooladsMediumRepository.All().Where(a => a.SchoolAdsId == id && a.MediaType == Data.Enums.MediaType.ImageUrl).FirstOrDefault();
 
@@ -45,15 +45,12 @@ namespace CSMWebsite2023.Services
             return result;
         }
 
-        public List<SchoolAdsDto>? GetSchoolAds()
+        public List<SchoolAdDto>? GetSchoolAds()
         {
             var query = _schooladsRepository.All();
 
-            return Mapper.Map<List<SchoolAdsDto>>(query);
+            return Mapper.Map<List<SchoolAdDto>>(query);
         }
-        public List<SchoolAdsDto>? GetSchoolAd()
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

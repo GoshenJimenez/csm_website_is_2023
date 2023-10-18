@@ -9,18 +9,18 @@ namespace CSMWebsite2023.Web.Pages
 {
     public class SchoolAds : PageModel
     {
-        public readonly ISchoolAdsService _schooladsService;
-        public SchoolAds(ISchoolAdsService schooladsService)
+        public readonly ISchoolAdService _schoolAdService;
+        public SchoolAds(ISchoolAdService schoolAdService)
         {
-            _schooladsService = schooladsService;
+            _schoolAdService = schoolAdService;
         }
 
         public void OnGet(Guid? id = null)
         {
             //Chats = _chatService.GetChats();
-            SchoolAdsItem = _schooladsService.GetSchoolAdsById(id);
+            SchoolAdItem = _schoolAdService.GetSchoolAdById(id);
         }
 
-        public SchoolAdsDto? SchoolAdsItem { get; set; }
+        public SchoolAdDto? SchoolAdItem { get; set; }
     }
 }

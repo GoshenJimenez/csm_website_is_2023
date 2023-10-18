@@ -2,12 +2,12 @@
 
 namespace CSMWebsite2023.Data.Models
 {
-    public class SchoolAdsReaction : BaseModel
+    public class SchoolAdReaction : BaseModel
     {
         public Guid? UserId { get; set; }
         public User? User { get; set; }
         public Guid? SchoolAdsId { get; set; }
-        public SchoolAds? SchoolAds { get; set; }
+        public SchoolAd? SchoolAds { get; set; }
         public ReactionType? ReactionType { get; set; }
     }
 }

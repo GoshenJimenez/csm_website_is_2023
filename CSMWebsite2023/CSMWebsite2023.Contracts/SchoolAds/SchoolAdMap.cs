@@ -13,8 +13,8 @@ namespace CSMWebsite2023.Contracts.SchoolAds
     {
         public Mapper()
         {
-            CreateMap<SchoolAds, SchoolAdsDto>();
-            CreateMap<SchoolAdsDto, SchoolAds>();
+            CreateMap<SchoolAd, SchoolAdDto>();
+            CreateMap<SchoolAdDto, SchoolAd>();
         }
     }
 }

@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace CSMWebsite2023.Contracts.SchoolAds
 {
-    public interface ISchoolAdsService : IService
+    public interface ISchoolAdService : IService
     {
-        List<SchoolAdsDto>? GetSchoolAd();
-        SchoolAdsDto? GetSchoolAdById(Guid? id);
-        SchoolAdsDto? GetSchoolAdsById(Guid? id);
+        List<SchoolAdDto>? GetSchoolAds();
+        SchoolAdDto? GetSchoolAdById(Guid? id);
     }
 }
