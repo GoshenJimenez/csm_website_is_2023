@@ -29,6 +29,23 @@ namespace CSMWebsite2023.Services
             _schoolPostMediaRepository = schoolPostMediaRepository;
         }
 
+        public async Task<CreateDto>? Create(CreateDto? dto)
+        {
+            await _schoolPostRepository.AddAsync(new SchoolPost()
+            {
+                Id = dto!.Id,
+                Content = dto.Content,
+                Title = dto.Title,
+                CreatedAt  = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                UserId = dto.UserId,
+            });
+
+            await _schoolPostRepository.SaveChangesAsync();
+
+            return dto;
+        }
+
         public SchoolPostDto? GetSchoolPostById(Guid? id)
         {
             var query = _schoolPostRepository.All()

@@ -15,6 +15,7 @@ namespace CSMWebsite2023.Contracts.SchoolPosts
         {
             CreateMap<SchoolPost, SchoolPostDto>();
             CreateMap<SchoolPostDto, SchoolPost>();
+            CreateMap<CreateDto, SchoolPost>();
         }
     }
 }

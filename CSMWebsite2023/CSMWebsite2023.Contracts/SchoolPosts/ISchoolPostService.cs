@@ -10,5 +10,7 @@ namespace CSMWebsite2023.Contracts.SchoolPosts
     public interface ISchoolPostService : IService
     {
         SchoolPostDto? GetSchoolPostById(Guid? id);
+
+        Task<CreateDto>? Create(CreateDto? dto);
     }
 }
