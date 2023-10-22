@@ -15,6 +15,7 @@ namespace CSMWebsite2023.Contracts.Researches
         {
             CreateMap<Research, ResearchDto>();
             CreateMap<ResearchDto, Research>();
+            CreateMap<CreateDto, Research>();
         }
     }
 }

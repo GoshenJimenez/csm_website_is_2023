@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Manage\CSMGroups\**" />
+    <Compile Remove="Pages\Manage\SchoolCalendar\**" />
+    <Compile Remove="Pages\Manage\SchoolWall\**" />
+    <Content Remove="Pages\Manage\CSMGroups\**" />
+    <Content Remove="Pages\Manage\SchoolCalendar\**" />
+    <Content Remove="Pages\Manage\SchoolWall\**" />
+    <EmbeddedResource Remove="Pages\Manage\CSMGroups\**" />
+    <EmbeddedResource Remove="Pages\Manage\SchoolCalendar\**" />
+    <EmbeddedResource Remove="Pages\Manage\SchoolWall\**" />
+    <None Remove="Pages\Manage\CSMGroups\**" />
+    <None Remove="Pages\Manage\SchoolCalendar\**" />
+    <None Remove="Pages\Manage\SchoolWall\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,11 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Manage\CSMGroups\" />
-    <Folder Include="Pages\Manage\Researches\" />
-    <Folder Include="Pages\Manage\SchoolAds\" />
-    <Folder Include="Pages\Manage\SchoolCalendar\" />
-    <Folder Include="Pages\Manage\SchoolWall\" />
     <Folder Include="wwwroot\messages\39c059ac-0cee-4daa-a8bd-2ee9d7050030\" />
     <Folder Include="wwwroot\schoolposts\caf9cd32-5e33-451d-a756-cad109eabef2\" />
   </ItemGroup>
