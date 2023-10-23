@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CSMWebsite2023.Contracts;
-using CSMWebsite2023.Contracts.GroupPost;
-using CSMWebsite2023.Contracts.SchoolPosts;
+using CSMWebsite2023.Contracts.GroupPosts;
 using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +48,23 @@ namespace CSMWebsite2023.Services
             var query = _grouppostRepository.All();
 
             return Mapper.Map<List<GroupPostDto>>(query);
+
+        }
+
+        public async Task<CreateDto>? Create(CreateDto? dto)
+        {
+            await _grouppostRepository.AddAsync(new GroupPost()
+            {
+                Id = Guid.NewGuid(),
+                GroupId = dto!.GroupId,
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                Title = dto.Title,
+                Description = dto.Description,
+            });
+            await _grouppostRepository.SaveChangesAsync();
+            return dto;
+
         }
     }
 }

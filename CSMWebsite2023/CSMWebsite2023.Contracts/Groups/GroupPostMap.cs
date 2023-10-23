@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSMWebsite2023.Contracts.GroupPost
+namespace CSMWebsite2023.Contracts.GroupPosts
 {
     public class Mapper : Profile
     {

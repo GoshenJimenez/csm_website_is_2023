@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSMWebsite2023.Contracts.GroupPosts
 {
-    public class GroupPostDto
+    public class CreateDto
     {
         public Guid? Id { get; set; }
         public Guid? GroupId { get; set; }
