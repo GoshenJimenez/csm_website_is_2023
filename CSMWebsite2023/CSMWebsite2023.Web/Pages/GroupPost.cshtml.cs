@@ -1,4 +1,4 @@
-using CSMWebsite2023.Contracts.GroupPost;
+using CSMWebsite2023.Contracts.GroupPosts;
 using CSMWebsite2023.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

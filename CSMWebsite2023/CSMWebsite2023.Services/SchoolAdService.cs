@@ -14,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace CSMWebsite2023.Services
 {
-    public class SchoolAdsService : BaseService, ISchoolAdService
+    public class SchoolAdService : BaseService, ISchoolAdService
     {
         private readonly IRepository<SchoolAd> _schooladsRepository;
         private readonly IRepository<SchoolAdMedium> _schooladsMediumRepository;
-        public SchoolAdsService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
+        public SchoolAdService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
               IRepository<SchoolAd> schooladsRepository,
               IRepository<SchoolAdMedium> schooladsMediumRepository
             )

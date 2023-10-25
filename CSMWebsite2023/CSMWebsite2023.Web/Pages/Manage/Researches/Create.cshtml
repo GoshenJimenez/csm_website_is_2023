@@ -13,6 +13,6 @@
         <label for="@Model.Dto!.Abstract">Content</label>
         <textarea asp-for="@Model.Dto!.Abstract" for="@Model.Dto!.Abstract"></textarea>
     </div>
-    <span> @Error </span>
+    <span> @Model!.Error </span>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
