@@ -10,8 +10,9 @@
         <input type="hidden" asp-for="@Model.Dto!.UserId" value="91a4e383-5133-4675-ad4e-24ef11bb4c02" />
     </div>
     <div class="form-group">
-        <label for="@Model.Dto!.Content">Content</label>
-        <textarea asp-for="@Model.Dto!.Content" for="@Model.Dto!.Content"></textarea>
+        <label for="@Model.Dto!.Abstract">Content</label>
+        <textarea asp-for="@Model.Dto!.Abstract" for="@Model.Dto!.Abstract"></textarea>
     </div>
+    <span> @Error </span>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

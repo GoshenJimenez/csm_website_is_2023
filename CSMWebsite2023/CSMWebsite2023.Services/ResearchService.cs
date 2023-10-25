@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CSMWebsite2023.Contracts;
 using CSMWebsite2023.Contracts.Researches;
-using CSMWebsite2023.Contracts.SchoolPosts;
 using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +48,38 @@ namespace CSMWebsite2023.Services
             var query = _researchRepository.All();
 
             return Mapper.Map<List<ResearchDto>>(query);
+        }
+        public async Task<OperationDto<ResearchDto>>? Create(CreateDto? dto)
+        {
+            try
+            {
+                var research = new Research()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow,
+                    Title = dto.Title,
+                    Abstract = dto.Abstract,
+                };
+                await _researchRepository.AddAsync(research);
+                await _researchRepository.SaveChangesAsync();
+
+                return new OperationDto<ResearchDto>()
+                {
+                    ReferenceId = research.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<ResearchDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
         }
     }
 }

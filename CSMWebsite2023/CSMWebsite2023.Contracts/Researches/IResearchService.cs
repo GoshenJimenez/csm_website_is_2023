@@ -11,5 +11,7 @@ namespace CSMWebsite2023.Contracts.Researches
     {
         List<ResearchDto>? GetResearches();
         ResearchDto? GetResearchById(Guid? id);
+        Task<OperationDto<ResearchDto>>? Create(CreateDto? dto);
+
     }
 }
