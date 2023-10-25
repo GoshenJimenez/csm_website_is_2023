@@ -23,7 +23,7 @@ builder.Services.AddDbContextFactory<DefaultDbContext>(
                .EnableSensitiveDataLogging()
                .EnableDetailedErrors()
 );
-
+    
 builder.Services.AddDataRepositories();
 builder.Services.AddServices();
 builder.Services.AddAutoMapper(typeof(Program), typeof(IService));
