@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CSMWebsite2023.Contracts;
 using CSMWebsite2023.Contracts.SchoolAds;
-using CSMWebsite2023.Contracts.SchoolPosts;
 using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
 using Microsoft.Extensions.Configuration;
@@ -50,6 +49,39 @@ namespace CSMWebsite2023.Services
             var query = _schooladsRepository.All();
 
             return Mapper.Map<List<SchoolAdDto>>(query);
+        }
+
+        public async Task<OperationDto<SchoolAdDto>>? Create(CreateDto? dto)
+        {
+            try
+            {
+                var schoolads = new SchoolAd()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow,
+                    Title = dto.Title,
+                    Description = dto.Description,
+                };
+                await _schooladsRepository.AddAsync(schoolads);
+                await _schooladsRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolAdDto>()
+                {
+                    ReferenceId = schoolads.Id,
+                    ReferenceData = Mapper.Map<SchoolAdDto>(schoolads),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolAdDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
         }
 
     }

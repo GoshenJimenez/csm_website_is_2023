@@ -11,5 +11,6 @@ namespace CSMWebsite2023.Contracts.SchoolAds
     {
         List<SchoolAdDto>? GetSchoolAds();
         SchoolAdDto? GetSchoolAdById(Guid? id);
+        Task<OperationDto<SchoolAdDto>>? Create(CreateDto? dto);
     }
 }

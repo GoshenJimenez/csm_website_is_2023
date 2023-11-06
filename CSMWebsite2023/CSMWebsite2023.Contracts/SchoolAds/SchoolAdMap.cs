@@ -15,6 +15,7 @@ namespace CSMWebsite2023.Contracts.SchoolAds
         {
             CreateMap<SchoolAd, SchoolAdDto>();
             CreateMap<SchoolAdDto, SchoolAd>();
+            CreateMap<CreateDto, SchoolAd>();
         }
     }
 }
