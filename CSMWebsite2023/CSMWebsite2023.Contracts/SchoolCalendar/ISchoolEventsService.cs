@@ -1,4 +1,5 @@
 ﻿using CSMWebsite2023.Contracts.Chats;
+using CSMWebsite2023.Contracts.SchoolEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace CSMWebsite2023.Contracts.SchoolEvents
     {
         List<SchoolEventDto>? GetSchoolEvents();
         SchoolEventDto? GetSchoolEventById(Guid? id);
+        Task<OperationDto<SchoolEventDto>>? Create(CreateDto? dto);
     }
 }

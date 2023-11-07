@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using CSMWebsite2023.Contracts;
-using CSMWebsite2023.Contracts.Researches;
 using CSMWebsite2023.Contracts.SchoolEvents;
-using CSMWebsite2023.Contracts.SchoolPosts;
 using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
 using Microsoft.Extensions.Configuration;
@@ -50,6 +48,38 @@ namespace CSMWebsite2023.Services
             var query = _schoolEventRepository.All();
 
             return Mapper.Map<List<SchoolEventDto>>(query);
+        }
+        public async Task<OperationDto<SchoolEventDto>>? Create(CreateDto? dto)
+        {
+            try
+            {
+                var schoolEvent = new SchoolEventDto()
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow,
+                    Title = dto.Title,
+                    Description = dto.Description,
+                };
+                await _schoolEventRepository.AddAsync(schoolEvent);
+                await _schoolEventRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolEventDto>()
+                {
+                    ReferenceId = schoolEvent.Id,
+                    ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolEventDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
         }
     }
 }

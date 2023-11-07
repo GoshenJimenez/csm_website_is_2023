@@ -15,6 +15,7 @@ namespace CSMWebsite2023.Contracts.SchoolEvents
         {
             CreateMap<SchoolEvent, SchoolEventDto>();
             CreateMap<SchoolEventDto, SchoolEvent>();
+            CreateMap<CreateDto, SchoolEvent>();
         }
     }
 }
