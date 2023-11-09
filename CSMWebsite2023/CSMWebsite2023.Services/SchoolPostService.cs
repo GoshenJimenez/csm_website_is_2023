@@ -17,15 +17,15 @@ namespace CSMWebsite2023.Services
     public class SchoolPostService : BaseService, ISchoolPostService
     {
         private readonly IRepository<SchoolPost> _schoolPostRepository;
-        private readonly IRepository<SchoolPostMedium> _schoolPostMediaRepository;
+        private readonly IRepository<SchoolPostMedium> _schoolPostMediumRepository;
         public SchoolPostService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
               IRepository<SchoolPost> schoolPostRepository,
-              IRepository<SchoolPostMedium> schoolPostMediaRepository
+              IRepository<SchoolPostMedium> schoolPostMediumRepository
             )
             : base(configuration, logger, mapper)
         {
             _schoolPostRepository = schoolPostRepository;
-            _schoolPostMediaRepository = schoolPostMediaRepository;
+            _schoolPostMediumRepository = schoolPostMediumRepository;
         }
 
         public async Task<OperationDto<SchoolPostDto>>? Create(CreateDto? dto)
@@ -43,7 +43,7 @@ namespace CSMWebsite2023.Services
 
                 var schoolPost = new SchoolPost()
                 {
-                    Id = dto!.Id,
+                    Id = dto!.Id != null ? dto.Id : Guid.NewGuid(),
                     Content = dto!.Content,
                     Title = dto!.Title,
                     CreatedAt = DateTime.Now,
@@ -52,6 +52,41 @@ namespace CSMWebsite2023.Services
                 };
 
                 await _schoolPostRepository.AddAsync(schoolPost);
+
+                var thumbnailSchoolPostMedium = new SchoolPostMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolPostId = schoolPost.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.Thumbnail,
+                    Value = $"//schoolposts//{schoolPost.Id}//thumbnail.png"
+                };
+
+                var galleryImageSchoolPostMedium = new SchoolPostMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolPostId = schoolPost.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.GalleryImage,
+                    Value = $"//schoolposts//{schoolPost.Id}//gallery-image.png"
+                };
+
+                var articleImageSchoolPostMedium = new SchoolPostMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    SchoolPostId = schoolPost.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.ArticleImage,
+                    Value = $"//schoolposts//{schoolPost.Id}//article-image.png"
+                };
+
+                await _schoolPostMediumRepository.AddAsync(thumbnailSchoolPostMedium);
+                await _schoolPostMediumRepository.AddAsync(galleryImageSchoolPostMedium);
+                await _schoolPostMediumRepository.AddAsync(articleImageSchoolPostMedium);
+
                 await _schoolPostRepository.SaveChangesAsync();
 
                 return new OperationDto<SchoolPostDto>()
@@ -80,7 +115,7 @@ namespace CSMWebsite2023.Services
 
             var result = Mapper.Map<SchoolPostDto>(query);
 
-            var media = _schoolPostMediaRepository.All().Where(a => a.SchoolPostId == id).ToList();
+            var media = _schoolPostMediumRepository.All().Where(a => a.SchoolPostId == id).ToList();
 
             result.SchoolPostMedia = media;
 

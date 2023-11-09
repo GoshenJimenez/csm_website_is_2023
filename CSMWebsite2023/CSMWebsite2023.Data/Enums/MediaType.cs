@@ -12,8 +12,10 @@ namespace CSMWebsite2023.Data.Enums
         ImageUrl = 1,
         ImageBase64 = 2,
         ArticleImage = 3,
-        Audio = 4,
-        Video = 5,
-        Link = 6
+        Thumbnail = 4,
+        GalleryImage = 5,
+        Audio = 6,
+        Video = 7,
+        Link = 8
     }
 }

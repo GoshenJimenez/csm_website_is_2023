@@ -3,16 +3,21 @@
 @{
 }
 
-<form method="Research">
+<form method="Post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="@Model.Dto!.Title">Title</label>
         <input type="text" asp-for="@Model.Dto!.Title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title">
-        <input type="hidden" asp-for="@Model.Dto!.UserId" value="91a4e383-5133-4675-ad4e-24ef11bb4c02" />
+        <input type="hidden" asp-for="@Model.Dto!.UserId" value="91a4e383-5133-4675-ad4e-24ef11bb4c00" />
     </div>
     <div class="form-group">
         <label for="@Model.Dto!.Content">Content</label>
         <textarea asp-for="@Model.Dto!.Content" for="@Model.Dto!.Content"></textarea>
     </div>
+    <div class="form-group">
+        <label for="@Model.ImageFile">Image File</label>
+        <input type="file" asp-for="@Model.ImageFile" for="@Model.ImageFile" />
+    </div>
+
     <span> @Model!.Error </span>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
