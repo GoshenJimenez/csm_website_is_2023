@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using CSMWebsite2023.Contracts;
-using CSMWebsite2023.Contracts.ChatMessages;
 using CSMWebsite2023.Contracts.SchoolPosts;
 using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
@@ -29,21 +28,48 @@ namespace CSMWebsite2023.Services
             _schoolPostMediaRepository = schoolPostMediaRepository;
         }
 
-        public async Task<CreateDto>? Create(CreateDto? dto)
+        public async Task<OperationDto<SchoolPostDto>>? Create(CreateDto? dto)
         {
-            await _schoolPostRepository.AddAsync(new SchoolPost()
+            try
             {
-                Id = dto!.Id,
-                Content = dto.Content,
-                Title = dto.Title,
-                CreatedAt  = DateTime.Now,
-                UpdatedAt = DateTime.Now,
-                UserId = dto.UserId,
-            });
+                if (dto == null)
+                {
+                    return new OperationDto<SchoolPostDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = "dto is null"
+                    };
+                }
 
-            await _schoolPostRepository.SaveChangesAsync();
+                var schoolPost = new SchoolPost()
+                {
+                    Id = dto!.Id,
+                    Content = dto!.Content,
+                    Title = dto!.Title,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    UserId = dto!.UserId,
+                };
 
-            return dto;
+                await _schoolPostRepository.AddAsync(schoolPost);
+                await _schoolPostRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolPostDto>()
+                {
+                    ReferenceId = schoolPost.Id,
+                    ReferenceData = Mapper.Map<SchoolPostDto>(schoolPost),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolPostDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
         }
 
         public SchoolPostDto? GetSchoolPostById(Guid? id)

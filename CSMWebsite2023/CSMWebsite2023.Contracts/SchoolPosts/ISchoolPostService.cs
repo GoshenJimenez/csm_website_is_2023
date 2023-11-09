@@ -11,6 +11,6 @@ namespace CSMWebsite2023.Contracts.SchoolPosts
     {
         SchoolPostDto? GetSchoolPostById(Guid? id);
 
-        Task<CreateDto>? Create(CreateDto? dto);
+        Task<OperationDto<SchoolPostDto>>? Create(CreateDto? dto);
     }
 }
