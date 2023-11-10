@@ -13,5 +13,7 @@ namespace CSMWebsite2023.Contracts.SchoolEvents
         public string? Description { get; set; }
         public DateTime? Date { get; set; }
         public string? ArticleImage { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

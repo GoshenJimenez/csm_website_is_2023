@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSMWebsite2023.Contracts.SchoolEvents;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -26,5 +27,6 @@ namespace CSMWebsite2023.Contracts
         void Delete(TEntity[] models);
 
         Task SaveChangesAsync();
+        Task AddAsync(SchoolEventDto schoolEvent);
     }
 }

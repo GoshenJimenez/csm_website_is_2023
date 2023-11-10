@@ -1,4 +1,3 @@
-using CSMWebsite2023.Contracts.Researches;
 using CSMWebsite2023.Contracts.SchoolEvents;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
