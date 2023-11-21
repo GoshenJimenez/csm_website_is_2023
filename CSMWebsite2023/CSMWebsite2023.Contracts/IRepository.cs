@@ -28,5 +28,6 @@ namespace CSMWebsite2023.Contracts
 
         Task SaveChangesAsync();
         Task AddAsync(SchoolEventDto schoolEvent);
+        Task AddAsync(object galleryImageResearchMedium);
     }
 }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CSMWebsite2023.Services
 {
@@ -55,14 +56,49 @@ namespace CSMWebsite2023.Services
             {
                 var research = new Research()
                 {
-                    Id = Guid.NewGuid(),
-                    CreatedAt = DateTime.UtcNow,
-                    UpdatedAt = DateTime.UtcNow,
+                    Id = dto!.Id != null ? dto.Id : Guid.NewGuid(),
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
                     Title = dto.Title,
                     Abstract = dto.Abstract,
                 };
-                await _researchRepository.AddAsync(research);
+                var thumbnailResearchMedium = new ResearchMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    ResearchId = research.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.Thumbnail,
+                    Value = $"//research//{research.Id}//thumbnail.png"
+
+                };
+                var galleryResearchMedium = new ResearchMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    ResearchId = research.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.GalleryImage,
+                    Value = $"//research//{research.Id}//gallery-image.png"
+
+                };
+                var articleImageResearchMedium = new ResearchMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    ResearchId = research.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.ArticleImage,
+                    Value = $"//research//{research.Id}//article-image.png"
+
+                };
+
+                await _researchMediumRepository.AddAsync(thumbnailResearchMedium);
+                await _researchMediumRepository.AddAsync(galleryImageResearchMedium);
+                await _researchMediumRepository.AddAsync(articleImageResearchMedium);
+
                 await _researchRepository.SaveChangesAsync();
+                await _researchRepository.AddAsync(research);
 
                 return new OperationDto<ResearchDto>()
                 {

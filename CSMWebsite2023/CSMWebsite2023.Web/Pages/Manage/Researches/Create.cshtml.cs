@@ -15,10 +15,6 @@ namespace CSMWebsite2023.Web.Pages.Manage.Researches
             Dto = new CreateDto();
         }
 
-        [BindProperty]
-        public CreateDto? Dto { get; set; }
-        [BindProperty]
-        public string? Error { get; set; }
         public async Task OnPost()
         {
             var op = await _researchService.Create(Dto);
@@ -31,6 +27,15 @@ namespace CSMWebsite2023.Web.Pages.Manage.Researches
                 Error = op.Message;
             }
         }
+
+        [BindProperty]
+        public CreateDto? Dto { get; set; }
+
+        [BindProperty]
+        public IFormFile? ImageFile { get; set; }
+
+        [BindProperty]
+        public string? Error { get; set; }
 
     }
 }
