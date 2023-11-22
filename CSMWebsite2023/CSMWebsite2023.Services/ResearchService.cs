@@ -72,7 +72,7 @@ namespace CSMWebsite2023.Services
                     Value = $"//research//{research.Id}//thumbnail.png"
 
                 };
-                var galleryResearchMedium = new ResearchMedium()
+                var galleryImageResearchMedium = new ResearchMedium()
                 {
                     Id = Guid.NewGuid(),
                     ResearchId = research.Id,
@@ -94,7 +94,7 @@ namespace CSMWebsite2023.Services
                 };
 
                 await _researchMediumRepository.AddAsync(thumbnailResearchMedium);
-                //await _researchMediumRepository.AddAsync(galleryImageResearchMedium);
+                await _researchMediumRepository.AddAsync(galleryImageResearchMedium);
                 await _researchMediumRepository.AddAsync(articleImageResearchMedium);
 
                 await _researchRepository.SaveChangesAsync();
