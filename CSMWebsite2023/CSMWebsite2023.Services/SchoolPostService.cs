@@ -60,7 +60,7 @@ namespace CSMWebsite2023.Services
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
                     MediaType = Data.Enums.MediaType.Thumbnail,
-                    Value = $"//schoolposts//{schoolPost.Id}//thumbnail.png"
+                    Value = $"/schoolposts/{schoolPost.Id}/thumbnail.png"
                 };
 
                 var galleryImageSchoolPostMedium = new SchoolPostMedium()
@@ -70,7 +70,7 @@ namespace CSMWebsite2023.Services
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
                     MediaType = Data.Enums.MediaType.GalleryImage,
-                    Value = $"//schoolposts//{schoolPost.Id}//gallery-image.png"
+                    Value = $"/schoolposts/{schoolPost.Id}/gallery-image.png"
                 };
 
                 var articleImageSchoolPostMedium = new SchoolPostMedium()
@@ -80,7 +80,7 @@ namespace CSMWebsite2023.Services
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
                     MediaType = Data.Enums.MediaType.ArticleImage,
-                    Value = $"//schoolposts//{schoolPost.Id}//article-image.png"
+                    Value = $"/schoolposts/{schoolPost.Id}/article-image.png"
                 };
 
                 await _schoolPostMediumRepository.AddAsync(thumbnailSchoolPostMedium);
