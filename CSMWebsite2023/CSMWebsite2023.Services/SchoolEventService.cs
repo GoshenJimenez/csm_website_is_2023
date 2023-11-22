@@ -53,21 +53,21 @@ namespace CSMWebsite2023.Services
         {
             try
             {
-                var schoolEvent = new SchoolEventDto()
-                {
-                    Id = Guid.NewGuid(),
-                    CreatedAt = DateTime.UtcNow,
-                    UpdatedAt = DateTime.UtcNow,
-                    Title = dto.Title,
-                    Description = dto.Description,
-                };
-                await _schoolEventRepository.AddAsync(schoolEvent);
-                await _schoolEventRepository.SaveChangesAsync();
+                //var schoolEvent = new SchoolEventDto()
+                //{
+                //    Id = Guid.NewGuid(),
+                //    CreatedAt = DateTime.UtcNow,
+                //    UpdatedAt = DateTime.UtcNow,
+                //    Title = dto.Title,
+                //    Description = dto.Description,
+                //};
+                //await _schoolEventRepository.AddAsync(schoolEvent);
+                //await _schoolEventRepository.SaveChangesAsync();
 
                 return new OperationDto<SchoolEventDto>()
                 {
-                    ReferenceId = schoolEvent.Id,
-                    ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
+                    //ReferenceId = schoolEvent.Id,
+                    //ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
                     Status = OpStatus.Ok,
                     Message = "Success"
                 };

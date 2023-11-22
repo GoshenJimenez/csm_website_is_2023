@@ -27,7 +27,5 @@ namespace CSMWebsite2023.Contracts
         void Delete(TEntity[] models);
 
         Task SaveChangesAsync();
-        Task AddAsync(SchoolEventDto schoolEvent);
-        Task AddAsync(object galleryImageResearchMedium);
     }
 }

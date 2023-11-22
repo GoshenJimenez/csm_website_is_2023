@@ -94,7 +94,7 @@ namespace CSMWebsite2023.Services
                 };
 
                 await _researchMediumRepository.AddAsync(thumbnailResearchMedium);
-                await _researchMediumRepository.AddAsync(galleryImageResearchMedium);
+                //await _researchMediumRepository.AddAsync(galleryImageResearchMedium);
                 await _researchMediumRepository.AddAsync(articleImageResearchMedium);
 
                 await _researchRepository.SaveChangesAsync();
