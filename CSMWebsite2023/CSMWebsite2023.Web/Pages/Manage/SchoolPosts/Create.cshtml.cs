@@ -3,6 +3,9 @@ using CSMWebsite2023.Contracts.SchoolPosts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SixLabors.ImageSharp.Processing;
+using Aspose.Html;
+using Aspose.Html.Converters;
+using Aspose.Html.Saving;
 
 namespace CSMWebsite2023.Web.Pages.Manage.SchoolPosts
 {
