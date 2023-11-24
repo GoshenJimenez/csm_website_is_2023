@@ -107,6 +107,50 @@ namespace CSMWebsite2023.Services
             }
         }
 
+        public async Task<OperationDto<SchoolPostDto>>? Update(UpdateDto? dto)
+        {
+            try
+            {
+                if (dto == null)
+                {
+                    return new OperationDto<SchoolPostDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = "dto is null"
+                    };
+                }
+
+                var schoolPost = _schoolPostRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (schoolPost != null)
+                {
+                    schoolPost.Content = dto!.Content;
+                    schoolPost.Title = dto!.Title;
+                    schoolPost.UpdatedAt = DateTime.Now;
+
+                    _schoolPostRepository.Update(schoolPost);
+                }
+
+                await _schoolPostRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolPostDto>()
+                {
+                    ReferenceId = schoolPost.Id,
+                    ReferenceData = Mapper.Map<SchoolPostDto>(schoolPost),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolPostDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
+        }
+
         public SchoolPostDto? GetSchoolPostById(Guid? id)
         {
             var query = _schoolPostRepository.All()
