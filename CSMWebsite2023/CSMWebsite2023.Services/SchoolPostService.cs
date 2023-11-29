@@ -49,6 +49,7 @@ namespace CSMWebsite2023.Services
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
                     UserId = dto!.UserId,
+                    IsActive = true
                 };
 
                 await _schoolPostRepository.AddAsync(schoolPost);
@@ -126,6 +127,92 @@ namespace CSMWebsite2023.Services
                 {
                     schoolPost.Content = dto!.Content;
                     schoolPost.Title = dto!.Title;
+                    schoolPost.UpdatedAt = DateTime.Now;
+
+                    _schoolPostRepository.Update(schoolPost);
+                }
+
+                await _schoolPostRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolPostDto>()
+                {
+                    ReferenceId = schoolPost.Id,
+                    ReferenceData = Mapper.Map<SchoolPostDto>(schoolPost),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolPostDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<OperationDto<SchoolPostDto>>? Delete(ActivationDto? dto)
+        {
+            try
+            {
+                if (dto == null)
+                {
+                    return new OperationDto<SchoolPostDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = "dto is null"
+                    };
+                }
+
+                var schoolPost = _schoolPostRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (schoolPost != null)
+                {
+                    schoolPost.IsActive = false;
+                    schoolPost.UpdatedAt = DateTime.Now;
+
+                    _schoolPostRepository.Update(schoolPost);
+                }
+
+                await _schoolPostRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolPostDto>()
+                {
+                    ReferenceId = schoolPost.Id,
+                    ReferenceData = Mapper.Map<SchoolPostDto>(schoolPost),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolPostDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<OperationDto<SchoolPostDto>>? Restore(ActivationDto? dto)
+        {
+            try
+            {
+                if (dto == null)
+                {
+                    return new OperationDto<SchoolPostDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = "dto is null"
+                    };
+                }
+
+                var schoolPost = _schoolPostRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (schoolPost != null)
+                {
+                    schoolPost.IsActive = true;
                     schoolPost.UpdatedAt = DateTime.Now;
 
                     _schoolPostRepository.Update(schoolPost);

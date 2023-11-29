@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSMWebsite2023.EntityFramework.Migrations
 {
     [DbContext(typeof(DefaultDbContext))]
-    [Migration("20231013064807_init")]
+    [Migration("20231129063312_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -22,129 +22,6 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                 .HasAnnotation("ProductVersion", "7.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdComment", b =>
-                {
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("longtext");
-
-                    b.Property<Guid?>("ReplyToId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<Guid?>("SchoolAdId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SchoolAdId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AdComments");
-                });
-
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdMedium", b =>
-                {
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("MediaType")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("SchoolAdId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SchoolAdId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AdMedia");
-                });
-
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdReaction", b =>
-                {
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int?>("ReactionType")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("SchoolAdId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SchoolAdId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AdReactions");
-                });
-
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdShare", b =>
-                {
-                    b.Property<Guid?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("SchoolAdId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SchoolAdId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AdShares");
-                });
-
             modelBuilder.Entity("CSMWebsite2023.Data.Models.Chat", b =>
                 {
                     b.Property<Guid?>("Id")
@@ -153,6 +30,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
@@ -168,37 +48,42 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c01"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2658),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5235),
+                            IsActive = true,
                             Name = "School Friends Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2657)
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5234)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c02"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2660),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5238),
+                            IsActive = true,
                             Name = "Family Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2660)
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5237)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2663),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5241),
+                            IsActive = true,
                             Name = "CIS 214 Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2662)
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5240)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c04"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2665),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5243),
+                            IsActive = true,
                             Name = "History Class Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2664)
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5242)
                         },
                         new
                         {
                             Id = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c05"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2667),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5245),
+                            IsActive = true,
                             Name = "Barcada Chat",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2666)
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5244)
                         });
                 });
 
@@ -216,6 +101,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int?>("MediaType")
                         .HasColumnType("int");
@@ -252,6 +140,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -271,16 +162,18 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         {
                             Id = new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b501"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2677),
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2677),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5258),
+                            IsActive = true,
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5257),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00")
                         },
                         new
                         {
                             Id = new Guid("a3c237aa-97b9-481b-bc32-5ca036b9b502"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2681),
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2680),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5262),
+                            IsActive = true,
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5262),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01")
                         });
                 });
@@ -296,6 +189,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Message")
                         .HasColumnType("longtext");
@@ -322,18 +218,20 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         {
                             Id = new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050030"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2686),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5267),
+                            IsActive = true,
                             Message = "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2686),
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5266),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00")
                         },
                         new
                         {
                             Id = new Guid("39c059ac-0cee-4daa-a8bd-2ee9d7050031"),
                             ChatId = new Guid("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2690),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5272),
+                            IsActive = true,
                             Message = "Hello, Mauris condimentum urna vel diam gravida vulputate",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2690),
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5271),
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01")
                         });
                 });
@@ -352,6 +250,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int?>("ReactionType")
                         .HasColumnType("int");
@@ -382,6 +283,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
@@ -396,6 +300,7 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f32"),
+                            IsActive = true,
                             Name = "Name"
                         });
                 });
@@ -411,6 +316,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<Guid?>("GroupId")
                         .HasColumnType("char(36)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
@@ -445,6 +353,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<Guid?>("GroupId")
                         .HasColumnType("char(36)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
@@ -473,8 +384,11 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<Guid?>("GroupPostId")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid?>("MediaType")
-                        .HasColumnType("char(36)");
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("MediaType")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -503,6 +417,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
@@ -518,6 +435,7 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         {
                             Id = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
                             Abstract = "Abstract",
+                            IsActive = true,
                             Title = "Title"
                         });
                 });
@@ -530,6 +448,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<Guid?>("ResearchId")
                         .HasColumnType("char(36)");
@@ -557,6 +478,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Message")
                         .HasColumnType("longtext");
@@ -591,6 +515,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("MediaType")
                         .HasColumnType("int");
 
@@ -624,6 +551,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("ReactionType")
                         .HasColumnType("int");
 
@@ -653,6 +583,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<Guid?>("ResearchId")
                         .HasColumnType("char(36)");
@@ -684,6 +617,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
@@ -699,8 +635,144 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         {
                             Id = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f34"),
                             Description = "Description",
+                            IsActive = true,
                             Title = "Title"
                         });
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdComment", b =>
+                {
+                    b.Property<Guid?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("ReplyToId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("SchoolAdsId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SchoolAdsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AdComments");
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdMedium", b =>
+                {
+                    b.Property<Guid?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("MediaType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("SchoolAdsId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SchoolAdsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AdMedia");
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdReaction", b =>
+                {
+                    b.Property<Guid?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<int?>("ReactionType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("SchoolAdsId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SchoolAdsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AdReactions");
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdShare", b =>
+                {
+                    b.Property<Guid?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<Guid?>("SchoolAdsId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SchoolAdsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AdShares");
                 });
 
             modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolEvent", b =>
@@ -718,6 +790,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
@@ -732,8 +807,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
-                            Date = new DateTime(2023, 11, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2718),
+                            Date = new DateTime(2023, 12, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5292),
                             Description = "A party for students to get to get to know one another",
+                            IsActive = true,
                             Title = "Acquaintance Party"
                         });
                 });
@@ -746,6 +822,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<Guid?>("ReplyToId")
                         .HasColumnType("char(36)");
@@ -780,6 +859,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("MediaType")
                         .HasColumnType("int");
 
@@ -806,7 +888,8 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7ff3f13c-3cff-40d0-89ab-1e81831eb34a"),
+                            Id = new Guid("657ee26a-8b52-4a34-b577-02b961fcdb26"),
+                            IsActive = true,
                             MediaType = 3,
                             SchoolEventId = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
                             Value = "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg"
@@ -821,6 +904,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<Guid?>("SchoolEventId")
                         .HasColumnType("char(36)");
@@ -848,6 +934,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<Guid?>("SchoolEventId")
                         .HasColumnType("char(36)");
@@ -879,6 +968,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("Title")
                         .HasColumnType("longtext");
 
@@ -899,6 +991,7 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         {
                             Id = new Guid("caf9cd32-5e33-451d-a756-cad109eabef2"),
                             Content = "TEST CONTENT",
+                            IsActive = true,
                             Title = "Title",
                             UserId = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01")
                         });
@@ -912,6 +1005,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Message")
                         .HasColumnType("longtext");
@@ -946,6 +1042,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("MediaType")
                         .HasColumnType("int");
 
@@ -968,6 +1067,7 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("f6d073e1-1948-44ac-a1c7-c85f26457f28"),
+                            IsActive = true,
                             MediaType = 1,
                             SchoolPostId = new Guid("caf9cd32-5e33-451d-a756-cad109eabef2"),
                             Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png"
@@ -982,6 +1082,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int?>("ReactionType")
                         .HasColumnType("int");
@@ -1012,6 +1115,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<Guid?>("SchoolPostId")
                         .HasColumnType("char(36)");
@@ -1046,6 +1152,9 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("longtext");
 
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
 
@@ -1060,81 +1169,23 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         new
                         {
                             Id = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2645),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5221),
                             EmailAddress = "etirel@mailinator.com",
                             FirstName = "Elspeth",
+                            IsActive = true,
                             LastName = "Tirel",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2633)
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5201)
                         },
                         new
                         {
                             Id = new Guid("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
-                            CreatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2654),
+                            CreatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5231),
                             EmailAddress = "jbeleren@mailinator.com",
                             FirstName = "Jace",
+                            IsActive = true,
                             LastName = "Beleren",
-                            UpdatedAt = new DateTime(2023, 10, 13, 14, 48, 7, 212, DateTimeKind.Local).AddTicks(2653)
+                            UpdatedAt = new DateTime(2023, 11, 29, 14, 33, 12, 434, DateTimeKind.Local).AddTicks(5230)
                         });
-                });
-
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdComment", b =>
-                {
-                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAd")
-                        .WithMany()
-                        .HasForeignKey("SchoolAdId");
-
-                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("SchoolAd");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdMedium", b =>
-                {
-                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAd")
-                        .WithMany()
-                        .HasForeignKey("SchoolAdId");
-
-                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("SchoolAd");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdReaction", b =>
-                {
-                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAd")
-                        .WithMany()
-                        .HasForeignKey("SchoolAdId");
-
-                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("SchoolAd");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("CSMWebsite2023.Data.Models.AdShare", b =>
-                {
-                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAd")
-                        .WithMany()
-                        .HasForeignKey("SchoolAdId");
-
-                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("SchoolAd");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CSMWebsite2023.Data.Models.ChatMedium", b =>
@@ -1319,6 +1370,66 @@ namespace CSMWebsite2023.EntityFramework.Migrations
                         .HasForeignKey("UserId");
 
                     b.Navigation("Research");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdComment", b =>
+                {
+                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAds")
+                        .WithMany()
+                        .HasForeignKey("SchoolAdsId");
+
+                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("SchoolAds");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdMedium", b =>
+                {
+                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAds")
+                        .WithMany()
+                        .HasForeignKey("SchoolAdsId");
+
+                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("SchoolAds");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdReaction", b =>
+                {
+                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAds")
+                        .WithMany()
+                        .HasForeignKey("SchoolAdsId");
+
+                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("SchoolAds");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CSMWebsite2023.Data.Models.SchoolAdShare", b =>
+                {
+                    b.HasOne("CSMWebsite2023.Data.Models.SchoolAd", "SchoolAds")
+                        .WithMany()
+                        .HasForeignKey("SchoolAdsId");
+
+                    b.HasOne("CSMWebsite2023.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("SchoolAds");
 
                     b.Navigation("User");
                 });

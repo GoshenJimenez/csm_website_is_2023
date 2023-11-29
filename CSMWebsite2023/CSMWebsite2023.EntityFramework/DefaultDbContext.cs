@@ -80,6 +80,7 @@ namespace CSMWebsite2023.EntityFramework
                     LastName =  "Tirel",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },
                 new User()
                 {
@@ -89,6 +90,7 @@ namespace CSMWebsite2023.EntityFramework
                     LastName =  "Beleren",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },
             };
 
@@ -100,30 +102,35 @@ namespace CSMWebsite2023.EntityFramework
                     Name = "School Friends Chat",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },new Chat()
                 {
                     Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c02"),
                     Name = "Family Chat",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },new Chat()
                 {
                     Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
                     Name = "CIS 214 Chat",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },new Chat()
                 {
                     Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c04"),
                     Name = "History Class Chat",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },new Chat()
                 {
                     Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c05"),
                     Name = "Barcada Chat",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 }
             };
 
@@ -135,6 +142,7 @@ namespace CSMWebsite2023.EntityFramework
                     UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },
                 new ChatMember()
                 {
@@ -143,6 +151,7 @@ namespace CSMWebsite2023.EntityFramework
                     UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 }
             };
 
@@ -156,6 +165,7 @@ namespace CSMWebsite2023.EntityFramework
                     Message = "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },
                 new ChatMessage()
                 {
@@ -165,6 +175,7 @@ namespace CSMWebsite2023.EntityFramework
                     Message = "Hello, Mauris condimentum urna vel diam gravida vulputate",
                     UpdatedAt = DateTime.Now,
                     CreatedAt = DateTime.Now,
+                    IsActive = true,
                 },
             };
 
@@ -177,6 +188,7 @@ namespace CSMWebsite2023.EntityFramework
                     Content = "TEST CONTENT",
                     Title = "Title",
                     UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
+                    IsActive = true,
                 }
             };
 
@@ -186,7 +198,8 @@ namespace CSMWebsite2023.EntityFramework
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f28"),
                     MediaType = Data.Enums.MediaType.ImageUrl,
                     SchoolPostId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
-                    Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png"
+                    Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png",
+                    IsActive = true,
                 }
             };
 
@@ -196,6 +209,7 @@ namespace CSMWebsite2023.EntityFramework
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
                     Title = "Title",
                     Abstract = "Abstract",
+                    IsActive = true,
                 }
             };
 
@@ -205,6 +219,7 @@ namespace CSMWebsite2023.EntityFramework
                 {
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f32"),
                     Name = "Name",
+                    IsActive = true,
                 }
             };
 
@@ -214,6 +229,7 @@ namespace CSMWebsite2023.EntityFramework
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f34"),
                     Title = "Title",
                     Description = "Description",
+                    IsActive = true,
                 }
             };
 
@@ -223,7 +239,8 @@ namespace CSMWebsite2023.EntityFramework
                     Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
                     Title = "Acquaintance Party",
                     Description = "A party for students to get to get to know one another",
-                    Date = DateTime.Now.AddMonths(1)
+                    Date = DateTime.Now.AddMonths(1),
+                    IsActive = true,
                 }
             };
 
@@ -234,7 +251,8 @@ namespace CSMWebsite2023.EntityFramework
                     Id = Guid.NewGuid(),
                     SchoolEventId = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
                     MediaType = Data.Enums.MediaType.ArticleImage,
-                    Value = "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg"
+                    Value = "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg",
+                    IsActive = true,
                 }
             };
 

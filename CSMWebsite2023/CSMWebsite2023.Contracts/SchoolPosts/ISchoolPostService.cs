@@ -13,5 +13,7 @@ namespace CSMWebsite2023.Contracts.SchoolPosts
 
         Task<OperationDto<SchoolPostDto>>? Create(CreateDto? dto);
         Task<OperationDto<SchoolPostDto>>? Update(UpdateDto? dto);
+        Task<OperationDto<SchoolPostDto>>? Delete(ActivationDto? dto);
+        Task<OperationDto<SchoolPostDto>>? Restore(ActivationDto? dto);
     }
 }
