@@ -1,5 +1,6 @@
 using CSMWebsite2023.Contracts;
 using CSMWebsite2023.Contracts.Researches;
+using CSMWebsite2023.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics.Eventing.Reader;
@@ -9,22 +10,87 @@ namespace CSMWebsite2023.Web.Pages.Manage.Researches
     public class Create : PageModel
     {
         public readonly IResearchService _researchService;
-        public Create(IResearchService researchService)
+        public readonly IWebHostEnvironment _env;
+        public Create(IResearchService researchService, IWebHostEnvironment env)
         {
             _researchService = researchService;
             Dto = new CreateDto();
+            _env = env;
         }
 
         public async Task OnPost()
         {
-            var op = await _researchService.Create(Dto);
-            if(op != null && op.Status == OpStatus.Ok)
+            if (ImageFile == null)
             {
-                
+                Error = "Please select an image file for your Research";
+                return;
             }
-            else if(op != null && op.Status == OpStatus.Fail)
+
+            var fileSize = ImageFile!.Length;
+            if ((fileSize / 1048576.0) > 5)
+            {
+                Error = "The file you uploaded is too large. Filesize limit is 5mb.";
+            }
+            if (ImageFile!.ContentType != "image/jpeg" && ImageFile!.ContentType != "image/png")
+            {
+                Error = "Please upload a jpeg or png file for the attachment.";
+            }
+
+            var op = await _researchService.Create(Dto);
+            if (op != null && op.Status == OpStatus.Ok)
+            {
+                //$"//research//{research.Id}//article-image.png"
+                var dirPath = _env.WebRootPath + "/research/" + op.ReferenceId.ToString();
+                if (!Directory.Exists(dirPath))
+                {
+                    Directory.CreateDirectory(dirPath);
+                }
+
+                if (ImageFile!.Length > 0)
+                {
+                    byte[] bytes = await FileBytes(ImageFile!.OpenReadStream());
+                    using (Image<Rgba32> image = SixLabors.ImageSharp.Image.Load<Rgba32>(bytes))
+                    {
+                        var galleryImage = image;
+                        SaveFile(galleryImage, "gallery-image.png", dirPath, 200);
+
+                        var articleImage = image;
+                        SaveFile(articleImage, "article-image.png", dirPath, 800);
+
+                        var thumbnail = image;
+                        SaveFile(thumbnail, "thumbnail.png", dirPath, 30);
+                    }
+                }
+            }
+            else if (op != null && op.Status == OpStatus.Fail)
             {
                 Error = op.Message;
+            }
+        }
+
+        private void SaveFile(Image<Rgba32> image, string? filename = "", string? dirPath = "", int width = 800)
+        {
+            var filePath = dirPath + "/" + filename;
+            if (image.Width > width)
+            {
+                var ratio = width / image.Width;
+                image.Mutate(x => x.Resize(width, Convert.ToInt32(image.Height * ratio)));
+            }
+
+            image.Save(filePath);
+        }
+
+        public async Task<byte[]> FileBytes(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
             }
         }
 

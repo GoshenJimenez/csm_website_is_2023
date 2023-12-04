@@ -9,9 +9,11 @@ namespace CSMWebsite2023.Contracts.Researches
 {
     public interface IResearchService : IService
     {
-        List<ResearchDto>? GetResearches();
-        ResearchDto? GetResearchById(Guid? id);
-        Task<OperationDto<ResearchDto>>? Create(CreateDto? dto);
+        ResearchDto? GetSchoolPostById(Guid? id);
 
+        Task<OperationDto<ResearchDto>>? Create(CreateDto? dto);
+        Task<OperationDto<ResearchDto>>? Update(UpdateDto? dto);
+        Task<OperationDto<ResearchDto>>? Delete(ActivationDto? dto);
+        Task<OperationDto<ResearchDto>>? Restore(ActivationDto? dto);
     }
 }

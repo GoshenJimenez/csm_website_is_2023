@@ -1,9 +1,9 @@
 using CSMWebsite2023.Contracts.ChatMessages;
 using CSMWebsite2023.Contracts.Chats;
 using CSMWebsite2023.Contracts.Researches;
-using CSMWebsite2023.Contracts.SchoolPosts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Hosting;
 
 namespace CSMWebsite2023.Web.Pages
 {
@@ -18,7 +18,8 @@ namespace CSMWebsite2023.Web.Pages
         public void OnGet(Guid? id = null)
         {
             //Chats = _chatService.GetChats();
-            ResearchItem = _researchService.GetResearchById(id);
+            ResearchItem = (ResearchDto?)_researchService.GetResearchById(id);
+
         }
 
         public ResearchDto? ResearchItem { get; set; }

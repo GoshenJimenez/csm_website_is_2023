@@ -1,4 +1,4 @@
-﻿@page "/research/{id}"
+﻿@page "/researches/{id}"
 @model CSMWebsite2023.Web.Pages.Research
 @{
 }
@@ -8,10 +8,21 @@
     if (Model.ResearchItem != null)
     {
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="@(Model.ResearchItem.ArticleImage)" alt="Card image cap">
+            <img class="card-img-top" src="/users/@(Model.ResearchItem.UserId).png" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">@Model.ResearchItem.Title</h5>
-                <p class="card-text">@Model.ResearchItem.Abstract</p>
+                <h5 class="card-title">@Model.ResearchItem.User.FirstName @Model.ResearchItem.User.LastName</h5>
+                <p class="card-text">@Html.Raw(Model.ResearchItem.Abstract)</p>
+            </div>
+            <div class="card-body">
+                @{
+                    foreach (var medium in Model.ResearchItem.ResearchMedia)
+                    {
+                        if (medium.MediaType == Data.Enums.MediaType.ImageUrl)
+                        {
+                            <img class="card-img" src="@(medium.Value)" alt="">
+                        }
+                    }
+                }
             </div>
         </div>
     }

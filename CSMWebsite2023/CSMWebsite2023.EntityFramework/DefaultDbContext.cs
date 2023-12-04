@@ -211,6 +211,17 @@ namespace CSMWebsite2023.EntityFramework
                     Abstract = "Abstract",
                     IsActive = true,
                 }
+
+            };
+            List<ResearchMedium> researchMedia = new List<ResearchMedium> {
+                new ResearchMedium()
+                {
+                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
+                    MediaType = Data.Enums.MediaType.ImageUrl,
+                    ResearchId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
+                    Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png",
+                    IsActive = true,
+                }
             };
 
 
@@ -269,6 +280,7 @@ namespace CSMWebsite2023.EntityFramework
 
 
             modelBuilder.Entity<Research>().HasData(researches);
+            modelBuilder.Entity<ResearchMedium>().HasData(researchMedia);
 
 
             modelBuilder.Entity<Group>().HasData(groups);

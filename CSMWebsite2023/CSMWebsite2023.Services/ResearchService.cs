@@ -3,6 +3,7 @@ using CSMWebsite2023.Contracts;
 using CSMWebsite2023.Contracts.Researches;
 using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -27,29 +28,6 @@ namespace CSMWebsite2023.Services
             _researchRepository = researchRepository;
             _researchMediumRepository = researchMediumRepository;
         }
-        public ResearchDto? GetResearchById(Guid? id)
-        {
-            var query = _researchRepository.All()
-                         .FirstOrDefault(a => a.Id == id);
-
-            var result = Mapper.Map<ResearchDto>(query);
-
-            var image = _researchMediumRepository.All().Where(a => a.ResearchId == id && a.MediaType == Data.Enums.MediaType.ImageUrl).FirstOrDefault();
-
-            if (image != null)
-            {
-                result.ArticleImage = image.Value;
-            }
-
-            return result;
-        }
-
-        public List<ResearchDto>? GetResearches()
-        {
-            var query = _researchRepository.All();
-
-            return Mapper.Map<List<ResearchDto>>(query);
-        }
         public async Task<OperationDto<ResearchDto>>? Create(CreateDto? dto)
         {
             try
@@ -57,10 +35,11 @@ namespace CSMWebsite2023.Services
                 var research = new Research()
                 {
                     Id = dto!.Id != null ? dto.Id : Guid.NewGuid(),
+                    Abstract = dto!.Abstract,
+                    Title = dto!.Title,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
-                    Title = dto.Title,
-                    Abstract = dto.Abstract,
+                    IsActive = true
                 };
                 var thumbnailResearchMedium = new ResearchMedium()
                 {
@@ -115,6 +94,128 @@ namespace CSMWebsite2023.Services
                     Status = OpStatus.Fail,
                     Message = ex.Message
                 };
+            }
+
+            public async Task<OperationDto<ResearchDto>>? Update(UpdateDto? dto)
+            {
+                try
+                {
+
+                    var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                    if (research != null)
+                    {
+                        research.Abstract = dto!.Abstract;
+                        research.Title = dto!.Title;
+                        research.UpdatedAt = DateTime.Now;
+
+                        _researchRepository.Update(research);
+                    }
+
+                    await _researchRepository.SaveChangesAsync();
+
+                    return new OperationDto<ResearchDto>()
+                    {
+                        ReferenceId = research.Id,
+                        ReferenceData = Mapper.Map<ResearchDto>(research),
+                        Status = OpStatus.Ok,
+                        Message = "Success"
+                    };
+                }
+                catch (Exception ex)
+                {
+                    return new OperationDto<ResearchDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = ex.Message
+                    };
+                }
+            }
+
+            public async Task<OperationDto<ResearchDto>>? Delete(ActivationDto? dto)
+            {
+                try
+                {
+                    if (dto == null)
+                    {
+                        return new OperationDto<ResearchDto>()
+                        {
+                            Status = OpStatus.Fail,
+                            Message = "dto is null"
+                        };
+                    }
+
+                    var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                    if (research != null)
+                    {
+                        research.IsActive = false;
+                        research.UpdatedAt = DateTime.Now;
+
+                        _researchRepository.Update(research);
+                    }
+
+                    await _researchRepository.SaveChangesAsync();
+
+                    return new OperationDto<ResearchDto>()
+                    {
+                        ReferenceId = research.Id,
+                        ReferenceData = Mapper.Map<ResearchDto>(research),
+                        Status = OpStatus.Ok,
+                        Message = "Success"
+                    };
+                }
+                catch (Exception ex)
+                {
+                    return new OperationDto<ResearchDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = ex.Message
+                    };
+                }
+            }
+
+            public async Task<OperationDto<ResearchDto>>? Restore(ActivationDto? dto)
+            {
+                try
+                {
+                    if (dto == null)
+                    {
+                        return new OperationDto<ResearchDto>()
+                        {
+                            Status = OpStatus.Fail,
+                            Message = "dto is null"
+                        };
+                    }
+
+                    var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                    if (research != null)
+                    {
+                        research.IsActive = true;
+                        research.UpdatedAt = DateTime.Now;
+
+                        _researchRepository.Update(research);
+                    }
+
+                    await _researchRepository.SaveChangesAsync();
+
+                    return new OperationDto<ResearchDto>()
+                    {
+                        ReferenceId = research.Id,
+                        ReferenceData = Mapper.Map<ResearchDto>(research),
+                        Status = OpStatus.Ok,
+                        Message = "Success"
+                    };
+                }
+                catch (Exception ex)
+                {
+                    return new OperationDto<ResearchDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = ex.Message
+                    };
+                }
             }
         }
     }

@@ -1,17 +1,18 @@
-﻿@page "/manage/researches/create"
-@model CSMWebsite2023.Web.Pages.Manage.Researches.Create
+﻿@page "/manage/researches/update/{id}"
+@model CSMWebsite2023.Web.Pages.Manage.Researches.Update
 @{
 }
 
-<form method="Post" enctype="multipart/form-data">
+<form method="ResearchItem" enctype="multipart/form-data">
     <div class="form-group">
         <label for="@Model.Dto!.Title">Title</label>
         <input type="text" asp-for="@Model.Dto!.Title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title">
         <input type="hidden" asp-for="@Model.Dto!.UserId" value="91a4e383-5133-4675-ad4e-24ef11bb4c02" />
+        <input type="hidden" asp-for="@Model.Dto!.Id"/>
     </div>
     <div class="form-group">
         <label for="@Model.Dto!.Abstract">Abstract</label>
-        <textarea id="content" asp-for="@Model.Dto!.Abstract" for="@Model.Dto!.Abstract"></textarea>
+        <textarea id="Abstract" asp-for="@Model.Dto!.Abstract" for="@Model.Dto!.Abstract"></textarea>
     </div>
     <div class="form-group">
         <label for="@Model.ImageFile">Image File</label>
@@ -22,10 +23,10 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-@section Scripts{
+@section Scripts {
     <script>
         tinymce.init({
-            selector: '#abstract',
+            selector: '#content',
             plugins: 'image code',
             image_title: true,
             automatic_uploads: true,
