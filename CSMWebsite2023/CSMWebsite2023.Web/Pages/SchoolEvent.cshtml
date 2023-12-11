@@ -1,4 +1,4 @@
-﻿@page "/school-event/{id}"
+﻿@page "/school-events/{id}"
 @model CSMWebsite2023.Web.Pages.SchoolEvent
 @{
 }
@@ -8,10 +8,21 @@
     if (Model.SchoolEventItem != null)
     {
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="@(Model.SchoolEventItem.ArticleImage)" alt="Card image cap">
+            <img class="card-img-top" src="/users/@(Model.SchoolEventItem.UserId).png" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">@Model.SchoolEventItem.Title</h5>
-                <p class="card-text">@Model.SchoolEventItem.Description</p>
+                <h5 class="card-title">@Model.SchoolEventItem.User.FirstName @Model.SchoolEventItem.User.LastName</h5>
+                <p class="card-text">@Html.Raw(Model.SchoolEventItem.Description)</p>
+            </div>
+            <div class="card-body">
+                @{
+                    foreach (var medium in Model.SchoolEventItem.SchoolEventMedia)
+                    {
+                        if (medium.MediaType == Data.Enums.MediaType.ImageUrl)
+                        {
+                            <img class="card-img" src="@(medium.Value)" alt="">
+                        }
+                    }
+                }
             </div>
         </div>
     }

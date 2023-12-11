@@ -10,8 +10,12 @@ namespace CSMWebsite2023.Contracts.SchoolEvents
 {
     public interface ISchoolEventService : IService
     {
-        List<SchoolEventDto>? GetSchoolEvents();
         SchoolEventDto? GetSchoolEventById(Guid? id);
+
+
         Task<OperationDto<SchoolEventDto>>? Create(CreateDto? dto);
+        Task<OperationDto<SchoolEventDto>>? Update(UpdateDto? dto);
+        Task<OperationDto<SchoolEventDto>>? Delete(ActivationDto? dto);
+        Task<OperationDto<SchoolEventDto>>? Restore(ActivationDto? dto);
     }
 }

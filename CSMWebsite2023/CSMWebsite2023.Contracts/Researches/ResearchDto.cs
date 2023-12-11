@@ -14,6 +14,8 @@ namespace CSMWebsite2023.Contracts.Researches
         public string? Title { get; set; }
         public string? Abstract { get; set; }
         public string? ArticleImage { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
         public List<ResearchMedium>? ResearchMedia { get; set; }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSMWebsite2023.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,6 @@ namespace CSMWebsite2023.Contracts.SchoolEvents
         public string? ArticleImage { get; set; }
         public DateTime UpdatedAt { get; set; }
         public DateTime CreatedAt { get; set; }
+        public List<SchoolEventMedium>? SchoolEventMedia { get; set; }
     }
 }
