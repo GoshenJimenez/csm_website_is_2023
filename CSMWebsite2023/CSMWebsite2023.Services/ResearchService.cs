@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 
 namespace CSMWebsite2023.Services
 {
@@ -28,10 +27,12 @@ namespace CSMWebsite2023.Services
             _researchRepository = researchRepository;
             _researchMediumRepository = researchMediumRepository;
         }
+
         public async Task<OperationDto<ResearchDto>>? Create(CreateDto? dto)
         {
             try
             {
+
                 var research = new Research()
                 {
                     Id = dto!.Id != null ? dto.Id : Guid.NewGuid(),
@@ -100,7 +101,6 @@ namespace CSMWebsite2023.Services
             {
                 try
                 {
-
                     var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
 
                     if (research != null)
