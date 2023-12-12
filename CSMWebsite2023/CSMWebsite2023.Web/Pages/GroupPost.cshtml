@@ -1,4 +1,29 @@
-﻿@page
+﻿@page "/groupPosts/{id}"
 @model CSMWebsite2023.Web.Pages.GroupPost
 @{
+}
+
+
+@{
+    if (Model.GroupPostItem != null)
+    {
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/users/@(Model.GroupPostItem.UserId).png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Model.GroupPostItem.User.FirstName @Model.GroupPostItem.User.LastName</h5>
+                <p class="card-text">@Html.Raw(Model.GroupPostItem.Description)</p>
+            </div>
+            <div class="card-body">
+                @{
+                    foreach (var medium in Model.GroupPostItem.GroupPostMedia)
+                    {
+                        if (medium.MediaType == Data.Enums.MediaType.ImageUrl)
+                        {
+                            <img class="card-img" src="@(medium.Value)" alt="">
+                        }
+                    }
+                }
+            </div>
+        </div>
+    }
 }

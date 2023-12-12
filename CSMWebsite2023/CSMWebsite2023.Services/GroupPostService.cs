@@ -15,56 +15,206 @@ namespace CSMWebsite2023.Services
 {
     public class GroupPostService : BaseService, IGroupPostService
     {
-        private readonly IRepository<GroupPost> _grouppostRepository;
-        private readonly IRepository<GroupPostMedium> _grouppostMediumRepository;
+        private readonly IRepository<GroupPost> _groupPostRepository;
+        private readonly IRepository<GroupPostMedium> _groupPostMediumRepository;
         public GroupPostService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
-              IRepository<GroupPost> grouppostRepository,
-              IRepository<GroupPostMedium> grouppostMediumRepository
+              IRepository<GroupPost> groupPostRepository,
+              IRepository<GroupPostMedium> groupPostMediumRepository
             )
             : base(configuration, logger, mapper)
         {
-            _grouppostRepository = grouppostRepository;
-            _grouppostMediumRepository = grouppostMediumRepository;
+            _groupPostRepository = groupPostRepository;
+            _groupPostMediumRepository = groupPostMediumRepository;
         }
-        public GroupPostDto? GetGroupPostById(Guid? id)
+        public async Task<OperationDto<GroupPostDto>>? Create(CreateDto? dto)
         {
-            var query = _grouppostRepository.All()
-                         .FirstOrDefault(a => a.Id == id);
-
-            var result = Mapper.Map<GroupPostDto>(query);
-
-            var image = _grouppostMediumRepository.All().Where(a => a.GroupPostId == id && a.MediaType == Data.Enums.MediaType.ImageUrl).FirstOrDefault();
-
-            if (image != null)
+            try
             {
-                result.ArticleImage = image.Value;
+
+                var groupPost = new GroupPost()
+                {
+                    Id = dto!.Id != null ? dto.Id : Guid.NewGuid(),
+                    Description = dto!.Description,
+                    Title = dto!.Title,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    IsActive = true
+                };
+                var thumbnailGroupPostMedium = new GroupPostMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    GroupPostId = groupPost.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.Thumbnail,
+                    Value = $"//groupPost//{groupPost.Id}//thumbnail.png"
+
+                };
+                var galleryImageGroupPostMedium = new GroupPostMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    GroupPostId = groupPost.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.GalleryImage,
+                    Value = $"//groupPost//{groupPost.Id}//gallery-image.png"
+
+                };
+                var articleImageGroupPostMedium = new GroupPostMedium()
+                {
+                    Id = Guid.NewGuid(),
+                    GroupPostId = groupPost.Id,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MediaType = Data.Enums.MediaType.ArticleImage,
+                    Value = $"//groupPost//{groupPost.Id}//article-image.png"
+
+                };
+
+                await _groupPostMediumRepository.AddAsync(thumbnailGroupPostMedium);
+                await _groupPostMediumRepository.AddAsync(galleryImageGroupPostMedium);
+                await _groupPostMediumRepository.AddAsync(articleImageGroupPostMedium);
+
+                await _groupPostRepository.SaveChangesAsync();
+                await _groupPostRepository.AddAsync(groupPost);
+
+                return new OperationDto<GroupPostDto>()
+                {
+                    ReferenceId = groupPost.Id,
+                    ReferenceData = Mapper.Map<GroupPostDto>(groupPost),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<GroupPostDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
             }
 
-            return result;
-        }
-
-        public List<GroupPostDto>? GetGroupPost()
-        {
-            var query = _grouppostRepository.All();
-
-            return Mapper.Map<List<GroupPostDto>>(query);
-
-        }
-
-        public async Task<CreateDto>? Create(CreateDto? dto)
-        {
-            await _grouppostRepository.AddAsync(new GroupPost()
+            public async Task<OperationDto<GroupPostDto>>? Update(UpdateDto? dto)
             {
-                Id = Guid.NewGuid(),
-                GroupId = dto!.GroupId,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow,
-                Title = dto.Title,
-                Description = dto.Description,
-            });
-            await _grouppostRepository.SaveChangesAsync();
-            return dto;
+                try
+                {
+                    var groupPost = _groupPostRepository.All().FirstOrDefault(a => a.Id == dto.Id);
 
+                    if (groupPost != null)
+                    {
+                        groupPost.Description = dto!.Description;
+                        groupPost.Title = dto!.Title;
+                        groupPost.UpdatedAt = DateTime.Now;
+
+                        _groupPostRepository.Update(groupPost);
+                    }
+
+                    await _groupPostRepository.SaveChangesAsync();
+
+                    return new OperationDto<GroupPostDto>()
+                    {
+                        ReferenceId = groupPost.Id,
+                        ReferenceData = Mapper.Map<GroupPostDto>(groupPost),
+                        Status = OpStatus.Ok,
+                        Message = "Success"
+                    };
+                }
+                catch (Exception ex)
+                {
+                    return new OperationDto<GroupPostDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = ex.Message
+                    };
+                }
+            }
+
+            public async Task<OperationDto<GroupPostDto>>? Delete(ActivationDto? dto)
+            {
+                try
+                {
+                    if (dto == null)
+                    {
+                        return new OperationDto<GroupPostDto>()
+                        {
+                            Status = OpStatus.Fail,
+                            Message = "dto is null"
+                        };
+                    }
+
+                    var groupPost = _groupPostRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                    if (groupPost != null)
+                    {
+                        groupPost.IsActive = false;
+                        groupPost.UpdatedAt = DateTime.Now;
+
+                        _groupPostRepository.Update(groupPost);
+                    }
+
+                    await _groupPostRepository.SaveChangesAsync();
+
+                    return new OperationDto<GroupPostDto>()
+                    {
+                        ReferenceId = groupPost.Id,
+                        ReferenceData = Mapper.Map<GroupPostDto>(groupPost),
+                        Status = OpStatus.Ok,
+                        Message = "Success"
+                    };
+                }
+                catch (Exception ex)
+                {
+                    return new OperationDto<GroupPostDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = ex.Message
+                    };
+                }
+            }
+
+            public async Task<OperationDto<GroupPostDto>>? Restore(ActivationDto? dto)
+            {
+                try
+                {
+                    if (dto == null)
+                    {
+                        return new OperationDto<GroupPostDto>()
+                        {
+                            Status = OpStatus.Fail,
+                            Message = "dto is null"
+                        };
+                    }
+
+                    var groupPost = _groupPostRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                    if (groupPost != null)
+                    {
+                        groupPost.IsActive = true;
+                        groupPost.UpdatedAt = DateTime.Now;
+
+                        _groupPostRepository.Update(groupPost);
+                    }
+
+                    await _groupPostRepository.SaveChangesAsync();
+
+                    return new OperationDto<GroupPostDto>()
+                    {
+                        ReferenceId = groupPost.Id,
+                        ReferenceData = Mapper.Map<GroupPostDto>(groupPost),
+                        Status = OpStatus.Ok,
+                        Message = "Success"
+                    };
+                }
+                catch (Exception ex)
+                {
+                    return new OperationDto<GroupPostDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = ex.Message
+                    };
+                }
+            }
         }
     }
 }

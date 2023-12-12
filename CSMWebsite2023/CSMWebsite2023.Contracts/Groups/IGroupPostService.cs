@@ -9,8 +9,12 @@ namespace CSMWebsite2023.Contracts.GroupPosts
 {
     public interface IGroupPostService : IService
     {
-        List<GroupPostDto>? GetGroupPost();
         GroupPostDto? GetGroupPostById(Guid? id);
-        Task<CreateDto>? Create(CreateDto? dto);
+
+
+        Task<OperationDto<GroupPostDto>>? Create(CreateDto? dto);
+        Task<OperationDto<GroupPostDto>>? Update(UpdateDto? dto);
+        Task<OperationDto<GroupPostDto>>? Delete(ActivationDto? dto);
+        Task<OperationDto<GroupPostDto>>? Restore(ActivationDto? dto);
     }
 }
