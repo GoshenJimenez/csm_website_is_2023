@@ -13,9 +13,8 @@ namespace CSMWebsite2023.Contracts.GroupPosts
     {
         public Mapper()
         {
-            CreateMap<GroupPost, GroupPostDto>();
-            CreateMap<GroupPostDto, GroupPost>();
-            CreateMap<CreateDto, GroupPost>();
+            CreateMap<Research, GroupPostDto>();
+            CreateMap<GroupPostDto, Research>();
         }
     }
 }
