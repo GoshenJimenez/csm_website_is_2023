@@ -14,6 +14,7 @@ namespace CSMWebsite2023.Contracts.SchoolPosts
         public Guid? UserId { get; set; }
         public User? User { get; set; }
         public string? Content { get; set; }
+        public bool? IsActive { get; set; }
         public List<SchoolPostMedium>? SchoolPostMedia { get; set; }
     }
 }

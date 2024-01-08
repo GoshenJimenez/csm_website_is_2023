@@ -252,5 +252,39 @@ namespace CSMWebsite2023.Services
 
             return result;
         }
+
+        public async Task<Paged<SchoolPostDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "")
+        {
+            var query = _schoolPostRepository.All().AsQueryable();
+
+            if (!string.IsNullOrEmpty(keyword))
+            { 
+               query = _schoolPostRepository.All()
+                        .Include(a => a.User)
+                        .Where(a => a.Title != null && a.Title.ToLower().Contains(keyword.ToLower()));
+            }
+            else
+            {
+                query = _schoolPostRepository.All()
+                         .Include(a => a.User);
+            }
+
+            query = query.Where(a => a.IsActive == isActive);
+
+            var count = query.Count();
+            var skip = ((pageIndex - 1) * pageSize)!.Value;
+            var list = query.Skip(skip).Take(pageSize!.Value).ToList();
+            
+            var result = Mapper.Map<List<SchoolPostDto>>(query);
+
+            return new Paged<SchoolPostDto>()
+            {
+                PageIndex = pageIndex.Value,
+                PageSize = pageSize.Value,
+                Items = result,
+                TotalItems = count,
+                IsActive = isActive,
+            };
+        }
     }
 }

@@ -1,0 +1,56 @@
+﻿@page "/manage/school-posts/{isActive}/{pageIndex}/{pageSize}/{keyword}"
+@model CSMWebsite2023.Web.Pages.Manage.SchoolPosts.Index
+@{
+}
+
+<h2>Posts</h2>
+
+@{
+    if (Model.Posts != null)
+    {
+
+        if(Model.Posts.IsActive == true)
+        {
+            <a href="~/manage/school-posts/false" class="btn btn-success">View Inactive</a>
+        }
+        else
+        {
+            <a href="~/manage/school-posts/true" class="btn btn-success">View Active</a>
+        }
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach(var post in Model.Posts.Items)
+                    {
+                        <tr>
+                            <th scope="row">@post.Title</th>
+                            <td>@post.User.FirstName @post.User.LastName</td>
+                            <td><a href="~/manage/school-posts/update/@post.Id" class="btn btn-secondary">Update</a></td>
+                            <td>
+                                @{
+                                    if (post.IsActive == true)
+                                    {
+                                        <a href="~/manage/school-posts/delete/@post.Id" class="btn btn-danger">Delete</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/manage/school-posts/restore/@post.Id" class="btn btn-success">Restore</a>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+               }                
+            </tbody>
+        </table>
+    }
+}
