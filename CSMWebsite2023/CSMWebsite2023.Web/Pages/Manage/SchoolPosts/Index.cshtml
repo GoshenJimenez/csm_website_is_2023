@@ -1,4 +1,4 @@
-﻿@page "/manage/school-posts/{isActive}/{pageIndex}/{pageSize}/{keyword}"
+﻿@page "/manage/school-posts"
 @model CSMWebsite2023.Web.Pages.Manage.SchoolPosts.Index
 @{
 }
@@ -8,14 +8,14 @@
 @{
     if (Model.Posts != null)
     {
-
+        
         if(Model.Posts.IsActive == true)
         {
-            <a href="~/manage/school-posts/false" class="btn btn-success">View Inactive</a>
+            <a href="~/manage/school-posts?isActive=false" class="btn btn-success">View Inactive</a>
         }
         else
         {
-            <a href="~/manage/school-posts/true" class="btn btn-success">View Active</a>
+            <a href="~/manage/school-posts?isActive=true" class="btn btn-success">View Active</a>
         }
 
         <table class="table">
@@ -49,8 +49,26 @@
                             </td>
                         </tr>
                     }
-               }                
+               }           
             </tbody>
         </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @{
+                    if(Model.Posts.PageIndex > 1)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/school-posts?isActive=@(Model.Posts.IsActive)&pageIndex=@(Model.Posts.PageIndex-1)&pageSize=@(Model.Posts.PageSize)">Previous</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="">@Model.Posts.PageIndex of @Model.Posts.PageCount</a></li>
+                @{
+                    if (Model.Posts.PageCount > Model.Posts.PageIndex)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/school-posts?isActive=@(Model.Posts.IsActive)&pageIndex=@(Model.Posts.PageIndex+1)&pageSize=@(Model.Posts.PageSize)">Next</a></li>
+                    }
+                }
+            </ul>
+        </nav>
     }
 }

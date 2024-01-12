@@ -15,6 +15,6 @@ namespace CSMWebsite2023.Contracts.SchoolPosts
         Task<OperationDto<SchoolPostDto>>? Update(UpdateDto? dto);
         Task<OperationDto<SchoolPostDto>>? Delete(ActivationDto? dto);
         Task<OperationDto<SchoolPostDto>>? Restore(ActivationDto? dto);
-        Task<Paged<SchoolPostDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "");;
+        Task<Paged<SchoolPostDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "");
     }
 }

@@ -26,7 +26,12 @@ namespace CSMWebsite2023.Contracts
                 var quotient = Convert.ToInt32(Math.Floor(Convert.ToDecimal(TotalItems!.Value / PageSize!.Value))); 
                 var mod = TotalItems!.Value % PageSize!.Value;
 
-                return quotient * mod;
+                if(mod > 1)
+                {
+                    return quotient + 1;
+                }
+
+                return quotient;
             } 
         }
         public int? TotalItems { get; set;}

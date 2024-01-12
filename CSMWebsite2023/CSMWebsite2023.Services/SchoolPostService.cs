@@ -275,7 +275,7 @@ namespace CSMWebsite2023.Services
             var skip = ((pageIndex - 1) * pageSize)!.Value;
             var list = query.Skip(skip).Take(pageSize!.Value).ToList();
             
-            var result = Mapper.Map<List<SchoolPostDto>>(query);
+            var result = Mapper.Map<List<SchoolPostDto>>(list);
 
             return new Paged<SchoolPostDto>()
             {
