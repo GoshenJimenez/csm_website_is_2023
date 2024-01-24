@@ -16,5 +16,6 @@ namespace CSMWebsite2023.Contracts.Researches
         Task<OperationDto<ResearchDto>>? Update(UpdateDto? dto);
         Task<OperationDto<ResearchDto>>? Delete(ActivationDto? dto);
         Task<OperationDto<ResearchDto>>? Restore(ActivationDto? dto);
+        Task<Paged<ResearchDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "");
     }
 }

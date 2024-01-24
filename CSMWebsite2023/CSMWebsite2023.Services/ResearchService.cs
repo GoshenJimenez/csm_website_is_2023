@@ -96,127 +96,151 @@ namespace CSMWebsite2023.Services
                     Message = ex.Message
                 };
             }
+        }
 
-            public async Task<OperationDto<ResearchDto>>? Update(UpdateDto? dto)
+        private async Task<OperationDto<ResearchDto>>? Restore(ActivationDto? dto)
+        {
+            try
             {
-                try
-                {
-                    var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
-
-                    if (research != null)
-                    {
-                        research.Abstract = dto!.Abstract;
-                        research.Title = dto!.Title;
-                        research.UpdatedAt = DateTime.Now;
-
-                        _researchRepository.Update(research);
-                    }
-
-                    await _researchRepository.SaveChangesAsync();
-
-                    return new OperationDto<ResearchDto>()
-                    {
-                        ReferenceId = research.Id,
-                        ReferenceData = Mapper.Map<ResearchDto>(research),
-                        Status = OpStatus.Ok,
-                        Message = "Success"
-                    };
-                }
-                catch (Exception ex)
+                if (dto == null)
                 {
                     return new OperationDto<ResearchDto>()
                     {
                         Status = OpStatus.Fail,
-                        Message = ex.Message
+                        Message = "dto is null"
                     };
                 }
-            }
 
-            public async Task<OperationDto<ResearchDto>>? Delete(ActivationDto? dto)
-            {
-                try
+                var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (research != null)
                 {
-                    if (dto == null)
-                    {
-                        return new OperationDto<ResearchDto>()
-                        {
-                            Status = OpStatus.Fail,
-                            Message = "dto is null"
-                        };
-                    }
+                    research.IsActive = true;
+                    research.UpdatedAt = DateTime.Now;
 
-                    var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
-
-                    if (research != null)
-                    {
-                        research.IsActive = false;
-                        research.UpdatedAt = DateTime.Now;
-
-                        _researchRepository.Update(research);
-                    }
-
-                    await _researchRepository.SaveChangesAsync();
-
-                    return new OperationDto<ResearchDto>()
-                    {
-                        ReferenceId = research.Id,
-                        ReferenceData = Mapper.Map<ResearchDto>(research),
-                        Status = OpStatus.Ok,
-                        Message = "Success"
-                    };
+                    _researchRepository.Update(research);
                 }
-                catch (Exception ex)
+
+                await _researchRepository.SaveChangesAsync();
+
+                return new OperationDto<ResearchDto>()
+                {
+                    ReferenceId = research.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<ResearchDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        private async Task<OperationDto<ResearchDto>>? Delete(ActivationDto? dto)
+        {
+            try
+            {
+                if (dto == null)
                 {
                     return new OperationDto<ResearchDto>()
                     {
                         Status = OpStatus.Fail,
-                        Message = ex.Message
+                        Message = "dto is null"
                     };
                 }
-            }
 
-            public async Task<OperationDto<ResearchDto>>? Restore(ActivationDto? dto)
+                var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (research != null)
+                {
+                    research.IsActive = false;
+                    research.UpdatedAt = DateTime.Now;
+
+                    _researchRepository.Update(research);
+                }
+
+                await _researchRepository.SaveChangesAsync();
+
+                return new OperationDto<ResearchDto>()
+                {
+                    ReferenceId = research.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
             {
-                try
+                return new OperationDto<ResearchDto>()
                 {
-                    if (dto == null)
-                    {
-                        return new OperationDto<ResearchDto>()
-                        {
-                            Status = OpStatus.Fail,
-                            Message = "dto is null"
-                        };
-                    }
-
-                    var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
-
-                    if (research != null)
-                    {
-                        research.IsActive = true;
-                        research.UpdatedAt = DateTime.Now;
-
-                        _researchRepository.Update(research);
-                    }
-
-                    await _researchRepository.SaveChangesAsync();
-
-                    return new OperationDto<ResearchDto>()
-                    {
-                        ReferenceId = research.Id,
-                        ReferenceData = Mapper.Map<ResearchDto>(research),
-                        Status = OpStatus.Ok,
-                        Message = "Success"
-                    };
-                }
-                catch (Exception ex)
-                {
-                    return new OperationDto<ResearchDto>()
-                    {
-                        Status = OpStatus.Fail,
-                        Message = ex.Message
-                    };
-                }
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
             }
+        }
+
+        private async Task<OperationDto<ResearchDto>>? Update(UpdateDto? dto)
+        {
+            try
+            {
+                var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (research != null)
+                {
+                    research.Abstract = dto!.Abstract;
+                    research.Title = dto!.Title;
+                    research.UpdatedAt = DateTime.Now;
+
+                    _researchRepository.Update(research);
+                }
+
+                await _researchRepository.SaveChangesAsync();
+
+                return new OperationDto<ResearchDto>()
+                {
+                    ReferenceId = research.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    Status = OpStatus.Ok,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<ResearchDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public ResearchDto? GetResearchById(Guid? id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<OperationDto<ResearchDto>>? IResearchService.Update(UpdateDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<OperationDto<ResearchDto>>? IResearchService.Delete(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<OperationDto<ResearchDto>>? IResearchService.Restore(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paged<ResearchDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "")
+        {
+            throw new NotImplementedException();
         }
     }
 }

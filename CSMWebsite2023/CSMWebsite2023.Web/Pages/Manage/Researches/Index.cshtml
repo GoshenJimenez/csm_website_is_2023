@@ -1,0 +1,73 @@
+﻿@page "/manage/researches"
+@model CSMWebsite2023.Web.Pages.Manage.Researches.Index
+@{
+}
+
+<h2>v</h2>
+<a href="~/manage/researches/create" class="btn btn-success">Create New</a>
+@{
+    if (Model.ResearchItem != null)
+    {
+        
+        if (Model.ResearchItem.IsActive == true)
+        {
+            <a href="~/manage/researches?isActive=false" class="btn btn-success">View Inactive</a>
+        }
+        else
+        {
+            <a href="~/manage/researches?isActive=true" class="btn btn-success">View Active</a>
+        }
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Abstract</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var search in Model.ResearchItem.Items)
+                    {
+                        <tr>
+                            <th scope="row">@search.Title</th>
+                            <td><a href="~/manage/researches/update/@search.Id" class="btn btn-secondary">Update</a></td>
+                            <td>
+                                @{
+                                    if (search.IsActive == true)
+                                    {
+                                        <a href="~/manage/researches/delete/@search.Id" class="btn btn-danger">Delete</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/manage/researches/restore/@search.Id" class="btn btn-success">Restore</a>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+               }           
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @{
+                    if (Model.ResearchItem.PageIndex > 1)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/researches?isActive=@(Model.ResearchItem.IsActive)&pageIndex=@(Model.ResearchItem.PageIndex-1)&pageSize=@(Model.ResearchItem.PageSize)">Previous</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="">@Model.ResearchItem.PageIndex of @Model.ResearchItem.PageCount</a></li>
+                @{
+                    if (Model.ResearchItem.PageCount > Model.ResearchItem.PageIndex)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/researches?isActive=@(Model.ResearchItem.IsActive)&pageIndex=@(Model.ResearchItem.PageIndex+1)&pageSize=@(Model.ResearchItem.PageSize)">Next</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    }
+}

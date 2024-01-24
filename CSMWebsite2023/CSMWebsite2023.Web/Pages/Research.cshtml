@@ -10,19 +10,7 @@
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="/users/@(Model.ResearchItem.UserId).png" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">@Model.ResearchItem.User.FirstName @Model.ResearchItem.User.LastName</h5>
                 <p class="card-text">@Html.Raw(Model.ResearchItem.Abstract)</p>
-            </div>
-            <div class="card-body">
-                @{
-                    foreach (var medium in Model.ResearchItem.ResearchMedia)
-                    {
-                        if (medium.MediaType == Data.Enums.MediaType.ImageUrl)
-                        {
-                            <img class="card-img" src="@(medium.Value)" alt="">
-                        }
-                    }
-                }
             </div>
         </div>
     }
