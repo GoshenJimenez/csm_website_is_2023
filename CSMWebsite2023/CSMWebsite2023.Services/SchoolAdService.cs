@@ -84,5 +84,24 @@ namespace CSMWebsite2023.Services
             }
         }
 
+        public Task<OperationDto<SchoolAdDto>>? Update(UpdateDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationDto<SchoolAdDto>>? Delete(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationDto<SchoolAdDto>>? Restore(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paged<SchoolAdDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "")
+        {
+            throw new NotImplementedException();
+        }
     }
 }

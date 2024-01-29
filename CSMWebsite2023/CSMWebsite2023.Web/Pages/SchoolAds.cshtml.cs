@@ -1,7 +1,7 @@
 using CSMWebsite2023.Contracts.ChatMessages;
 using CSMWebsite2023.Contracts.Chats;
 using CSMWebsite2023.Contracts.SchoolAds;
-using CSMWebsite2023.Contracts.SchoolPosts;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
