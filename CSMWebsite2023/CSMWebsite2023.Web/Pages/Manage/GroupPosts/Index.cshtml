@@ -1,0 +1,73 @@
+﻿@page "/manage/groupposts"
+@model CSMWebsite2023.Web.Pages.Manage.GroupPosts.Index
+@{
+}
+
+<h2>v</h2>
+<a href="~/manage/groupposts/create" class="btn btn-success">Create New</a>
+@{
+    if (Model.GroupPostItem != null)
+    {
+        
+        if (Model.GroupPostItem.IsActive == true)
+        {
+            <a href="~/manage/grouppost?isActive=false" class="btn btn-success">View Inactive</a>
+        }
+        else
+        {
+            <a href="~/manage/grouppost?isActive=true" class="btn btn-success">View Active</a>
+        }
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var search in Model.GroupPostItem.Items)
+                    {
+                        <tr>
+                            <th scope="row">@search.Title</th>
+                            <td><a href="~/manage/grouppost/update/@search.Id" class="btn btn-secondary">Update</a></td>
+                            <td>
+                                @{
+                                    if (search.IsActive == true)
+                                    {
+                                        <a href="~/manage/grouppost/delete/@search.Id" class="btn btn-danger">Delete</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/manage/grouppost/restore/@search.Id" class="btn btn-success">Restore</a>
+                                    }
+                                }
+                            </td>
+                        </tr>
+                    }
+               }           
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @{
+                    if (Model.GroupPostItem.PageIndex > 1)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/groupposts?isActive=@(Model.GroupPostItem.IsActive)&pageIndex=@(Model.GroupPostItem.PageIndex-1)&pageSize=@(Model.GroupPostItem.PageSize)">Previous</a></li>
+                    }
+                }
+                <li class="page-item"><a class="page-link" href="">@Model.GroupPostItem.PageIndex of @Model.GroupPostItem.PageCount</a></li>
+                @{
+                    if (Model.GroupPostItem.PageCount > Model.GroupPostItem.PageIndex)
+                    {
+                        <li class="page-item"><a class="page-link" href="~/manage/grouppost?isActive=@(Model.GroupPostItem.IsActive)&pageIndex=@(Model.GroupPostItem.PageIndex+1)&pageSize=@(Model.GroupPostItem.PageSize)">Next</a></li>
+                    }
+                }
+            </ul>
+        </nav>
+    }
+}

@@ -1,0 +1,22 @@
+﻿@page "/manage/groupposts/restore/{id}"
+@model CSMWebsite2023.Web.Pages.Manage.GroupPosts.Restore
+@{
+}
+
+<form method="GroupPostItem" enctype="multipart/form-data">
+    <h3>Are you sure you want to restore this Post?</h3>
+    <div class="form-group">
+        <label for="@Model.Dto!.Title">Title</label>
+        <input type="text" asp-for="@Model.Dto!.Title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title" disabled>
+        <input type="hidden" asp-for="@Model.Dto!.UserId" value="91a4e383-5133-4675-ad4e-24ef11bb4c02" />
+        <input type="hidden" asp-for="@Model.Dto!.Id"/>
+    </div>
+    <div class="form-group">
+        <label for="@Model.Dto!.Description">Description</label>
+        <p class="card-text">@Html.Raw(Model.Dto!.Description)</p>
+    </div>
+
+    <span> @Model!.Error </span>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

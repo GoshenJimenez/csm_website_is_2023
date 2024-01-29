@@ -66,5 +66,30 @@ namespace CSMWebsite2023.Services
             return dto;
 
         }
+
+        Task<OperationDto<GroupPostDto>>? IGroupPostService.Create(CreateDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationDto<GroupPostDto>>? Update(UpdateDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationDto<GroupPostDto>>? Delete(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationDto<GroupPostDto>>? Restore(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paged<GroupPostDto>>? Posts(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "")
+        {
+            throw new NotImplementedException();
+        }
     }
 }
