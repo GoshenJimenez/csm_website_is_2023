@@ -117,127 +117,147 @@ namespace CSMWebsite2023.Services
                     Message = ex.Message
                 };
             }
+        }
 
-            public async Task<OperationDto<SchoolEventDto>>? Update(UpdateDto? dto)
+        private async Task<OperationDto<SchoolEventDto>>? Restore1(ActivationDto? dto)
+        {
+            try
             {
-                try
-                {
-                    var schoolEvent = _schoolEventRepository.All().FirstOrDefault(a => a.Id == dto.Id);
-
-                    if (schoolEvent != null)
-                    {
-                        schoolEvent.Description = dto!.Description;
-                        schoolEvent.Title = dto!.Title;
-                        schoolEvent.UpdatedAt = DateTime.Now;
-
-                        _schoolEventRepository.Update(schoolEvent);
-                    }
-
-                    await _schoolEventRepository.SaveChangesAsync();
-
-                    return new OperationDto<SchoolEventDto>()
-                    {
-                        ReferenceId = schoolEvent.Id,
-                        ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
-                        Status = OpStatus.Ok,
-                        Message = "Success"
-                    };
-                }
-                catch (Exception ex)
+                if (dto == null)
                 {
                     return new OperationDto<SchoolEventDto>()
                     {
                         Status = OpStatus.Fail,
-                        Message = ex.Message
+                        Message = "dto is null"
                     };
                 }
-            }
 
-            public async Task<OperationDto<SchoolEventDto>>? Delete(ActivationDto? dto)
-            {
-                try
+                var schoolEvent = _schoolEventRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (schoolEvent != null)
                 {
-                    if (dto == null)
-                    {
-                        return new OperationDto<SchoolEventDto>()
-                        {
-                            Status = OpStatus.Fail,
-                            Message = "dto is null"
-                        };
-                    }
+                    schoolEvent.IsActive = true;
+                    schoolEvent.UpdatedAt = DateTime.Now;
 
-                    var schoolEvent = _schoolEventRepository.All().FirstOrDefault(a => a.Id == dto.Id);
-
-                    if (schoolEvent != null)
-                    {
-                        schoolEvent.IsActive = false;
-                        schoolEvent.UpdatedAt = DateTime.Now;
-
-                        _schoolEventRepository.Update(schoolEvent);
-                    }
-
-                    await _schoolEventRepository.SaveChangesAsync();
-
-                    return new OperationDto<SchoolEventDto>()
-                    {
-                        ReferenceId = schoolEvent.Id,
-                        ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
-                        Status = OpStatus.Ok,
-                        Message = "Success"
-                    };
+                    _schoolEventRepository.Update(schoolEvent);
                 }
-                catch (Exception ex)
+
+                await _schoolEventRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolEventDto>()
+                {
+                    ReferenceId = schoolEvent.Id,
+                    ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolEventDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        private async Task<OperationDto<SchoolEventDto>>? Delete1(ActivationDto? dto)
+        {
+            try
+            {
+                if (dto == null)
                 {
                     return new OperationDto<SchoolEventDto>()
                     {
                         Status = OpStatus.Fail,
-                        Message = ex.Message
+                        Message = "dto is null"
                     };
                 }
-            }
 
-            public async Task<OperationDto<SchoolEventDto>>? Restore(ActivationDto? dto)
+                var schoolEvent = _schoolEventRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (schoolEvent != null)
+                {
+                    schoolEvent.IsActive = false;
+                    schoolEvent.UpdatedAt = DateTime.Now;
+
+                    _schoolEventRepository.Update(schoolEvent);
+                }
+
+                await _schoolEventRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolEventDto>()
+                {
+                    ReferenceId = schoolEvent.Id,
+                    ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
             {
-                try
+                return new OperationDto<SchoolEventDto>()
                 {
-                    if (dto == null)
-                    {
-                        return new OperationDto<SchoolEventDto>()
-                        {
-                            Status = OpStatus.Fail,
-                            Message = "dto is null"
-                        };
-                    }
-
-                    var schoolEvent = _schoolEventRepository.All().FirstOrDefault(a => a.Id == dto.Id);
-
-                    if (schoolEvent != null)
-                    {
-                        schoolEvent.IsActive = true;
-                        schoolEvent.UpdatedAt = DateTime.Now;
-
-                        _schoolEventRepository.Update(schoolEvent);
-                    }
-
-                    await _schoolEventRepository.SaveChangesAsync();
-
-                    return new OperationDto<SchoolEventDto>()
-                    {
-                        ReferenceId = schoolEvent.Id,
-                        ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
-                        Status = OpStatus.Ok,
-                        Message = "Success"
-                    };
-                }
-                catch (Exception ex)
-                {
-                    return new OperationDto<SchoolEventDto>()
-                    {
-                        Status = OpStatus.Fail,
-                        Message = ex.Message
-                    };
-                }
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
             }
+        }
+
+        private async Task<OperationDto<SchoolEventDto>>? Update1(UpdateDto? dto)
+        {
+            try
+            {
+                var schoolEvent = _schoolEventRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (schoolEvent != null)
+                {
+                    schoolEvent.Description = dto!.Description;
+                    schoolEvent.Title = dto!.Title;
+                    schoolEvent.UpdatedAt = DateTime.Now;
+
+                    _schoolEventRepository.Update(schoolEvent);
+                }
+
+                await _schoolEventRepository.SaveChangesAsync();
+
+                return new OperationDto<SchoolEventDto>()
+                {
+                    ReferenceId = schoolEvent.Id,
+                    ReferenceData = Mapper.Map<SchoolEventDto>(schoolEvent),
+                    Status = OpStatus.Ok,
+                    Message = "Success"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new OperationDto<SchoolEventDto>()
+                {
+                    Status = OpStatus.Fail,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public Task<OperationDto<SchoolEventDto>>? Update(UpdateDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationDto<SchoolEventDto>>? Delete(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<OperationDto<SchoolEventDto>>? Restore(ActivationDto? dto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Paged<SchoolEventDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "")
+        {
+            throw new NotImplementedException();
         }
     }
 }

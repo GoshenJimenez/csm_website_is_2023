@@ -17,5 +17,6 @@ namespace CSMWebsite2023.Contracts.SchoolEvents
         Task<OperationDto<SchoolEventDto>>? Update(UpdateDto? dto);
         Task<OperationDto<SchoolEventDto>>? Delete(ActivationDto? dto);
         Task<OperationDto<SchoolEventDto>>? Restore(ActivationDto? dto);
+        Task<Paged<SchoolEventDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "");
     }
 }
