@@ -14,76 +14,86 @@ using System.Threading.Tasks;
 
 namespace CSMWebsite2023.Services
 {
-    public class ResearchService : BaseService, IResearchService
+    public class ResearchesService : BaseService, IResearchService
     {
-        private readonly IRepository<Research> _researchRepository;
-        private readonly IRepository<ResearchMedium> _researchMediumRepository;
-        public ResearchService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
-              IRepository<Research> researchRepository,
-              IRepository<ResearchMedium> researchMediumRepository
+        private readonly IRepository<Research> _researchesRepository;
+        private readonly IRepository<ResearchMedium> _researchesMediumRepository;
+        public ResearchesService(IConfiguration configuration, ILogger<BaseService> logger, IMapper mapper,
+              IRepository<Research> researchesRepository,
+              IRepository<ResearchMedium> researchesMediumRepository
             )
             : base(configuration, logger, mapper)
         {
-            _researchRepository = researchRepository;
-            _researchMediumRepository = researchMediumRepository;
+            _researchesRepository = researchesRepository;
+            _researchesMediumRepository = researchesMediumRepository;
         }
 
         public async Task<OperationDto<ResearchDto>>? Create(CreateDto? dto)
         {
             try
             {
+                if (dto == null)
+                {
+                    return new OperationDto<ResearchDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = "dto is null"
+                    };
+                }
 
-                var research = new Research()
+                var researches = new Research()
                 {
                     Id = dto!.Id != null ? dto.Id : Guid.NewGuid(),
                     Abstract = dto!.Abstract,
                     Title = dto!.Title,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
+
                     IsActive = true
                 };
+
+                await _researchesRepository.AddAsync(researches);
+
                 var thumbnailResearchMedium = new ResearchMedium()
                 {
                     Id = Guid.NewGuid(),
-                    ResearchId = research.Id,
+                    ResearchId = researches.Id,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
                     MediaType = Data.Enums.MediaType.Thumbnail,
-                    Value = $"//research//{research.Id}//thumbnail.png"
-
+                    Value = $"/researches/{researches.Id}/thumbnail.png"
                 };
+
                 var galleryImageResearchMedium = new ResearchMedium()
                 {
                     Id = Guid.NewGuid(),
-                    ResearchId = research.Id,
+                    ResearchId = researches.Id,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
                     MediaType = Data.Enums.MediaType.GalleryImage,
-                    Value = $"//research//{research.Id}//gallery-image.png"
-
+                    Value = $"/researches/{researches.Id}/gallery-image.png"
                 };
+
                 var articleImageResearchMedium = new ResearchMedium()
                 {
                     Id = Guid.NewGuid(),
-                    ResearchId = research.Id,
+                    ResearchId = researches.Id,
                     CreatedAt = DateTime.Now,
                     UpdatedAt = DateTime.Now,
                     MediaType = Data.Enums.MediaType.ArticleImage,
-                    Value = $"//research//{research.Id}//article-image.png"
-
+                    Value = $"/researches/{researches.Id}/article-image.png"
                 };
 
-                await _researchMediumRepository.AddAsync(thumbnailResearchMedium);
-                await _researchMediumRepository.AddAsync(galleryImageResearchMedium);
-                await _researchMediumRepository.AddAsync(articleImageResearchMedium);
+                await _researchesMediumRepository.AddAsync(thumbnailResearchMedium);
+                await _researchesMediumRepository.AddAsync(galleryImageResearchMedium);
+                await _researchesMediumRepository.AddAsync(articleImageResearchMedium);
 
-                await _researchRepository.SaveChangesAsync();
-                await _researchRepository.AddAsync(research);
+                await _researchesRepository.SaveChangesAsync();
 
                 return new OperationDto<ResearchDto>()
                 {
-                    ReferenceId = research.Id,
-                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    ReferenceId = researches.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(researches),
                     Status = OpStatus.Ok,
                     Message = "Success"
                 };
@@ -98,7 +108,7 @@ namespace CSMWebsite2023.Services
             }
         }
 
-        private async Task<OperationDto<ResearchDto>>? Restore(ActivationDto? dto)
+        public async Task<OperationDto<ResearchDto>>? Update(UpdateDto? dto)
         {
             try
             {
@@ -111,22 +121,23 @@ namespace CSMWebsite2023.Services
                     };
                 }
 
-                var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+                var researches = _researchesRepository.All().FirstOrDefault(a => a.Id == dto.Id);
 
-                if (research != null)
+                if (researches != null)
                 {
-                    research.IsActive = true;
-                    research.UpdatedAt = DateTime.Now;
+                    researches.Abstract = dto!.Abstract;
+                    researches.Title = dto!.Title;
+                    researches.UpdatedAt = DateTime.Now;
 
-                    _researchRepository.Update(research);
+                    _researchesRepository.Update(researches);
                 }
 
-                await _researchRepository.SaveChangesAsync();
+                await _researchesRepository.SaveChangesAsync();
 
                 return new OperationDto<ResearchDto>()
                 {
-                    ReferenceId = research.Id,
-                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    ReferenceId = researches.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(researches),
                     Status = OpStatus.Ok,
                     Message = "Success"
                 };
@@ -141,7 +152,7 @@ namespace CSMWebsite2023.Services
             }
         }
 
-        private async Task<OperationDto<ResearchDto>>? Delete(ActivationDto? dto)
+        public async Task<OperationDto<ResearchDto>>? Delete(ActivationDto? dto)
         {
             try
             {
@@ -154,22 +165,22 @@ namespace CSMWebsite2023.Services
                     };
                 }
 
-                var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+                var researches = _researchesRepository.All().FirstOrDefault(a => a.Id == dto.Id);
 
-                if (research != null)
+                if (researches != null)
                 {
-                    research.IsActive = false;
-                    research.UpdatedAt = DateTime.Now;
+                    researches.IsActive = false;
+                    researches.UpdatedAt = DateTime.Now;
 
-                    _researchRepository.Update(research);
+                    _researchesRepository.Update(researches);
                 }
 
-                await _researchRepository.SaveChangesAsync();
+                await _researchesRepository.SaveChangesAsync();
 
                 return new OperationDto<ResearchDto>()
                 {
-                    ReferenceId = research.Id,
-                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    ReferenceId = researches.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(researches),
                     Status = OpStatus.Ok,
                     Message = "Success"
                 };
@@ -184,28 +195,37 @@ namespace CSMWebsite2023.Services
             }
         }
 
-        private async Task<OperationDto<ResearchDto>>? Update(UpdateDto? dto)
+        public async Task<OperationDto<ResearchDto>>? Restore(ActivationDto? dto)
         {
             try
             {
-                var research = _researchRepository.All().FirstOrDefault(a => a.Id == dto.Id);
-
-                if (research != null)
+                if (dto == null)
                 {
-                    research.Abstract = dto!.Abstract;
-                    research.Title = dto!.Title;
-                    research.UpdatedAt = DateTime.Now;
-
-                    _researchRepository.Update(research);
+                    return new OperationDto<ResearchDto>()
+                    {
+                        Status = OpStatus.Fail,
+                        Message = "dto is null"
+                    };
                 }
 
-                await _researchRepository.SaveChangesAsync();
+                var researches = _researchesRepository.All().FirstOrDefault(a => a.Id == dto.Id);
+
+                if (researches != null)
+                {
+                    researches.IsActive = true;
+                    researches.UpdatedAt = DateTime.Now;
+
+                    _researchesRepository.Update(researches);
+                }
+
+                await _researchesRepository.SaveChangesAsync();
 
                 return new OperationDto<ResearchDto>()
                 {
-                    ReferenceId = research.Id,
-                    ReferenceData = Mapper.Map<ResearchDto>(research),
+                    ReferenceId = researches.Id,
+                    ReferenceData = Mapper.Map<ResearchDto>(researches),
                     Status = OpStatus.Ok,
+                    Message = "Success"
                 };
             }
             catch (Exception ex)
@@ -220,27 +240,38 @@ namespace CSMWebsite2023.Services
 
         public ResearchDto? GetResearchById(Guid? id)
         {
-            throw new NotImplementedException();
+            var query = _researchesRepository.All()
+                         .FirstOrDefault(a => a.Id == id);
+
+            var result = Mapper.Map<ResearchDto>(query);
+
+            var media = _researchesMediumRepository.All().Where(a => a.ResearchId == id).ToList();
+
+            result.ResearchMedia = media;
+
+            return result;
         }
 
-        Task<OperationDto<ResearchDto>>? IResearchService.Update(UpdateDto? dto)
+        public async Task<Paged<ResearchDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "")
         {
-            throw new NotImplementedException();
-        }
+            var query = _researchesRepository.All().AsQueryable();
 
-        Task<OperationDto<ResearchDto>>? IResearchService.Delete(ActivationDto? dto)
-        {
-            throw new NotImplementedException();
-        }
+            query = query.Where(a => a.IsActive == isActive);
 
-        Task<OperationDto<ResearchDto>>? IResearchService.Restore(ActivationDto? dto)
-        {
-            throw new NotImplementedException();
-        }
+            var count = query.Count();
+            var skip = ((pageIndex - 1) * pageSize)!.Value;
+            var list = query.Skip(skip).Take(pageSize!.Value).ToList();
 
-        public Task<Paged<ResearchDto>>? Search(bool? isActive = true, int? pageIndex = 1, int? pageSize = 10, string? keyword = "")
-        {
-            throw new NotImplementedException();
+            var result = Mapper.Map<List<ResearchDto>>(list);
+
+            return new Paged<ResearchDto>()
+            {
+                PageIndex = pageIndex.Value,
+                PageSize = pageSize.Value,
+                Items = result,
+                TotalItems = count,
+                IsActive = isActive,
+            };
         }
     }
 }

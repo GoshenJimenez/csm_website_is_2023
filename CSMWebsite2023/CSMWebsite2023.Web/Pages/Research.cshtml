@@ -13,5 +13,16 @@
                 <p class="card-text">@Html.Raw(Model.ResearchItem.Abstract)</p>
             </div>
         </div>
+        <div class="card-body">
+            @{
+                foreach (var medium in Model.ResearchItem.ResearchMedia)
+                {
+                    if (medium.MediaType == Data.Enums.MediaType.ImageUrl)
+                    {
+                        <img class="card-img" src="@(medium.Value)" alt="">
+                    }
+                }
+            }
+        </div>
     }
 }
