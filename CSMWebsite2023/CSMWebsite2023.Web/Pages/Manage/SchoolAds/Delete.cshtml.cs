@@ -24,7 +24,7 @@ namespace CSMWebsite2023.Web.Pages.Manage.SchoolAds
         public void OnGet(Guid? id = null)
         {
             //Chats = _chatService.GetChats();
-            var record = _schoolAdService.GetSchoolAdById(id);
+            var record = _schoolAdService.GetSchoolAdsById(id);
 
             if (record != null)
             {
@@ -37,25 +37,25 @@ namespace CSMWebsite2023.Web.Pages.Manage.SchoolAds
 
         public async Task OnPost()
         {
-            if (Dto != null)
-            {
-                var op = await _schoolAdService.Delete(
-                    new ActivationDto()
-                    {
-                        Id = Dto.Id,
-                        IsActive = false
-                    }
-                );
+            //if (Dto != null)
+            //{
+            //    //var op = await _schoolAdService.Delete(
+            //    //    new ActivationDto()
+            //    //    {
+            //    //        IsActive = false,
+            //    //        Id = Dto.Id,
+            //    //    }
+            //    //);
 
-                if (op != null && op.Status == OpStatus.Ok)
-                {
+            //    if (op != null && op.Status == OpStatus.Ok)
+            //    {
                    
-                }
-                else if (op != null && op.Status == OpStatus.Fail)
-                {
-                    Error = op.Message;
-                }
-            }
+            //    }
+            //    else if (op != null && op.Status == OpStatus.Fail)
+            //    {
+            //        Error = op.Message;
+            //    }
+            //}
         }
 
         [BindProperty]

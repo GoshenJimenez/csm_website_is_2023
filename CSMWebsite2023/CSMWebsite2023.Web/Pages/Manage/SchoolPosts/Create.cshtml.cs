@@ -63,6 +63,8 @@ namespace CSMWebsite2023.Web.Pages.Manage.SchoolPosts
                         SaveFile(thumbnail, "thumbnail.png", dirPath, 30);
                     }
                 }
+
+
             }
             else if (op != null && op.Status == OpStatus.Fail)
             {

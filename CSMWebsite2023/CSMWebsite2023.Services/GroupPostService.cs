@@ -91,5 +91,10 @@ namespace CSMWebsite2023.Services
         {
             throw new NotImplementedException();
         }
+
+        object IGroupPostService.GetGroupPostById(Guid? id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

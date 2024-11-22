@@ -16,7 +16,7 @@ namespace CSMWebsite2023.Web.Pages
         public void OnGet(Guid? id = null)
         {
             //Chats = _chatService.GetChats();
-            GroupPostItem = _groupPostService.GetGroupPostById(id);
+            //GroupPostItem = _groupPostService.GetGroupPostById(id);
         }
 
         public GroupPostDto? GroupPostItem { get; set; }

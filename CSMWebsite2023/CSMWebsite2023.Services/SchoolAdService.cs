@@ -103,5 +103,10 @@ namespace CSMWebsite2023.Services
         {
             throw new NotImplementedException();
         }
+
+        public object GetSchoolAdsById(Guid? id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

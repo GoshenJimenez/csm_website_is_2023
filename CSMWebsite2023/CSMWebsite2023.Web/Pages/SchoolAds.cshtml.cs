@@ -18,7 +18,7 @@ namespace CSMWebsite2023.Web.Pages
         public void OnGet(Guid? id = null)
         {
             //Chats = _chatService.GetChats();
-            SchoolAdItem = _schoolAdService.GetSchoolAdById(id);
+           // SchoolAdItem = _schoolAdService.GetSchoolAdById(id);
         }
 
         public SchoolAdDto? SchoolAdItem { get; set; }

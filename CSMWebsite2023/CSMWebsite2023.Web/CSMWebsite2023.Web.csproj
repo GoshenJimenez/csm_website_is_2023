@@ -8,17 +8,35 @@
 
   <ItemGroup>
     <Compile Remove="Pages\Manage\CSMGroups\**" />
+    <Compile Remove="Pages\Manage\Researches\**" />
     <Compile Remove="Pages\Manage\SchoolCalendar\**" />
+    <Compile Remove="Pages\Manage\SchoolEvents\**" />
     <Compile Remove="Pages\Manage\SchoolWall\**" />
     <Content Remove="Pages\Manage\CSMGroups\**" />
+    <Content Remove="Pages\Manage\Researches\**" />
     <Content Remove="Pages\Manage\SchoolCalendar\**" />
+    <Content Remove="Pages\Manage\SchoolEvents\**" />
     <Content Remove="Pages\Manage\SchoolWall\**" />
     <EmbeddedResource Remove="Pages\Manage\CSMGroups\**" />
+    <EmbeddedResource Remove="Pages\Manage\Researches\**" />
     <EmbeddedResource Remove="Pages\Manage\SchoolCalendar\**" />
+    <EmbeddedResource Remove="Pages\Manage\SchoolEvents\**" />
     <EmbeddedResource Remove="Pages\Manage\SchoolWall\**" />
     <None Remove="Pages\Manage\CSMGroups\**" />
+    <None Remove="Pages\Manage\Researches\**" />
     <None Remove="Pages\Manage\SchoolCalendar\**" />
+    <None Remove="Pages\Manage\SchoolEvents\**" />
     <None Remove="Pages\Manage\SchoolWall\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\Research.cshtml.cs" />
+    <Compile Remove="Pages\SchoolEvent.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Research.cshtml" />
+    <Content Remove="Pages\SchoolEvent.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
