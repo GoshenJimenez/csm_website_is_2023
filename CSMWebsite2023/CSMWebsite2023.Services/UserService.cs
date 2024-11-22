@@ -5,6 +5,7 @@ using CSMWebsite2023.Data.Models;
 using CSMWebsite2023.Services.Common;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,18 @@ namespace CSMWebsite2023.Services
 
             return Mapper
             .Map<List<UserDto>>(query);
+        }
+
+        public UserDto? GetUserByEmail(string? emailAddress = null)
+        {
+            if (emailAddress == null)
+            {
+                return null;
+            }
+
+            var query = _userRepository.All().FirstOrDefault(a => a.EmailAddress != null && a.EmailAddress.ToLower() == emailAddress!.ToLower());
+
+            return Mapper.Map<UserDto?>(query);
         }
     }
 }

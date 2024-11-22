@@ -9,5 +9,7 @@ namespace CSMWebsite2023.Contracts.Users
     public interface IUserService : IService
     {
         List<UserDto>? GetUsers();  
+
+        UserDto? GetUserByEmail(string? emailAddress = null);
     }
 }
