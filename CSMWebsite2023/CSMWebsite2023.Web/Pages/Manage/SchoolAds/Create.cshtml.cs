@@ -3,6 +3,9 @@ using CSMWebsite2023.Contracts.SchoolAds;
 using CSMWebsite2023.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
 using System.Diagnostics.Eventing.Reader;
 
 namespace CSMWebsite2023.Web.Pages.Manage.SchoolAds

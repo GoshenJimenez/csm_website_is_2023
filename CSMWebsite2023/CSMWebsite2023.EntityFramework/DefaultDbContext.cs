@@ -18,6 +18,8 @@ namespace CSMWebsite2023.EntityFramework
 
         public DbSet<User>? Users { get; set; }
 
+        public DbSet<LoginInfo>? LoginInfos { get; set; }
+
         #region Chats
         public DbSet<Chat>? Chats { get; set; }
         public DbSet<ChatMedium>? ChatMedia { get; set; }
@@ -94,203 +96,203 @@ namespace CSMWebsite2023.EntityFramework
                 },
             };
 
-            List<Chat>? chats = new List<Chat>()
-            {
-                new Chat()
-                { //
-                    Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c01"),
-                    Name = "School Friends Chat",
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                },new Chat()
-                {
-                    Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c02"),
-                    Name = "Family Chat",
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                },new Chat()
-                {
-                    Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                    Name = "CIS 214 Chat",
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                },new Chat()
-                {
-                    Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c04"),
-                    Name = "History Class Chat",
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                },new Chat()
-                {
-                    Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c05"),
-                    Name = "Barcada Chat",
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                }
-            };
+            //List<Chat>? chats = new List<Chat>()
+            //{
+            //    new Chat()
+            //    { //
+            //        Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c01"),
+            //        Name = "School Friends Chat",
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    },new Chat()
+            //    {
+            //        Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c02"),
+            //        Name = "Family Chat",
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    },new Chat()
+            //    {
+            //        Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+            //        Name = "CIS 214 Chat",
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    },new Chat()
+            //    {
+            //        Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c04"),
+            //        Name = "History Class Chat",
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    },new Chat()
+            //    {
+            //        Id = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c05"),
+            //        Name = "Barcada Chat",
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    }
+            //};
 
-            List<ChatMember>? chatMembers = new List<ChatMember>() {
-                new ChatMember()
-                {
-                    Id = Guid.Parse("a3c237aa-97b9-481b-bc32-5ca036b9b501"),
-                    ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                    UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                },
-                new ChatMember()
-                {
-                    Id = Guid.Parse("a3c237aa-97b9-481b-bc32-5ca036b9b502"),
-                    ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                    UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                }
-            };
+            //List<ChatMember>? chatMembers = new List<ChatMember>() {
+            //    new ChatMember()
+            //    {
+            //        Id = Guid.Parse("a3c237aa-97b9-481b-bc32-5ca036b9b501"),
+            //        ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+            //        UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    },
+            //    new ChatMember()
+            //    {
+            //        Id = Guid.Parse("a3c237aa-97b9-481b-bc32-5ca036b9b502"),
+            //        ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+            //        UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    }
+            //};
 
-            List<ChatMessage>? chatMessages = new List<ChatMessage>()
-            {
-                new ChatMessage()
-                {
-                    Id = Guid.Parse("39c059ac-0cee-4daa-a8bd-2ee9d7050030"),
-                    ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                    UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
-                    Message = "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.",
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                },
-                new ChatMessage()
-                {
-                    Id = Guid.Parse("39c059ac-0cee-4daa-a8bd-2ee9d7050031"),
-                    ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
-                    UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
-                    Message = "Hello, Mauris condimentum urna vel diam gravida vulputate",
-                    UpdatedAt = DateTime.Now,
-                    CreatedAt = DateTime.Now,
-                    IsActive = true,
-                },
-            };
-
-
-            List<SchoolPost> schoolPosts = new List<SchoolPost>()
-            {
-                new SchoolPost()
-                {
-                    Id = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
-                    Content = "TEST CONTENT",
-                    Title = "Title",
-                    UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
-                    IsActive = true,
-                }
-            };
-
-            List<SchoolPostMedium> schoolPostMedia = new List<SchoolPostMedium> {
-                new SchoolPostMedium()
-                {
-                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f28"),
-                    MediaType = Data.Enums.MediaType.ImageUrl,
-                    SchoolPostId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
-                    Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png",
-                    IsActive = true,
-                }
-            };
-
-            List<Research> researches = new List<Research> {
-                new Research()
-                {
-                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
-                    Title = "Title",
-                    Abstract = "Abstract",
-                    IsActive = true,
-                }
-
-            };
-            List<ResearchMedium> researchMedia = new List<ResearchMedium> {
-                new ResearchMedium()
-                {
-                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
-                    MediaType = Data.Enums.MediaType.ImageUrl,
-                    ResearchId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
-                    Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png",
-                    IsActive = true,
-                }
-            };
+            //List<ChatMessage>? chatMessages = new List<ChatMessage>()
+            //{
+            //    new ChatMessage()
+            //    {
+            //        Id = Guid.Parse("39c059ac-0cee-4daa-a8bd-2ee9d7050030"),
+            //        ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+            //        UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c00"),
+            //        Message = "Hi, Nunc at turpis faucibus, viverra ipsum non, vestibulum nibh.",
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    },
+            //    new ChatMessage()
+            //    {
+            //        Id = Guid.Parse("39c059ac-0cee-4daa-a8bd-2ee9d7050031"),
+            //        ChatId = Guid.Parse("857918e8-67dd-4c35-b70d-936ba0fc0c03"),
+            //        UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
+            //        Message = "Hello, Mauris condimentum urna vel diam gravida vulputate",
+            //        UpdatedAt = DateTime.Now,
+            //        CreatedAt = DateTime.Now,
+            //        IsActive = true,
+            //    },
+            //};
 
 
-            List<Group> groups = new List<Group> {
-                new Group()
-                {
-                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f32"),
-                    Name = "Name",
-                    IsActive = true,
-                }
-            };
+            //List<SchoolPost> schoolPosts = new List<SchoolPost>()
+            //{
+            //    new SchoolPost()
+            //    {
+            //        Id = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
+            //        Content = "TEST CONTENT",
+            //        Title = "Title",
+            //        UserId =  Guid.Parse("91a4e383-5133-4675-ad4e-24ef11bb4c01"),
+            //        IsActive = true,
+            //    }
+            //};
 
-            List<SchoolAd> schoolads = new List<SchoolAd> {
-                new SchoolAd()
-                {
-                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f34"),
-                    Title = "Title",
-                    Description = "Description",
-                    IsActive = true,
-                }
-            };
+            //List<SchoolPostMedium> schoolPostMedia = new List<SchoolPostMedium> {
+            //    new SchoolPostMedium()
+            //    {
+            //        Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f28"),
+            //        MediaType = Data.Enums.MediaType.ImageUrl,
+            //        SchoolPostId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
+            //        Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png",
+            //        IsActive = true,
+            //    }
+            //};
 
-            List<SchoolEvent> schoolCalendar = new List<SchoolEvent> {
-                new SchoolEvent()
-                {
-                    Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
-                    Title = "Acquaintance Party",
-                    Description = "A party for students to get to get to know one another",
-                    Date = DateTime.Now.AddMonths(1),
-                    IsActive = true,
-                }
-            };
+            //List<Research> researches = new List<Research> {
+            //    new Research()
+            //    {
+            //        Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
+            //        Title = "Title",
+            //        Abstract = "Abstract",
+            //        IsActive = true,
+            //    }
 
-            List<SchoolEventMedium> schoolEventMedia = new List<SchoolEventMedium>()
-            {
-                new SchoolEventMedium()
-                {
-                    Id = Guid.NewGuid(),
-                    SchoolEventId = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
-                    MediaType = Data.Enums.MediaType.ArticleImage,
-                    Value = "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg",
-                    IsActive = true,
-                }
-            };
-
+            //};
+            //List<ResearchMedium> researchMedia = new List<ResearchMedium> {
+            //    new ResearchMedium()
+            //    {
+            //        Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f30"),
+            //        MediaType = Data.Enums.MediaType.ImageUrl,
+            //        ResearchId = Guid.Parse("caf9cd32-5e33-451d-a756-cad109eabef2"),
+            //        Value = "/schoolposts/caf9cd32-5e33-451d-a756-cad109eabef2/main.png",
+            //        IsActive = true,
+            //    }
+            //};
 
 
-            modelBuilder.Entity<Chat>().HasData(chats);
+            //List<Group> groups = new List<Group> {
+            //    new Group()
+            //    {
+            //        Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f32"),
+            //        Name = "Name",
+            //        IsActive = true,
+            //    }
+            //};
+
+            //List<SchoolAd> schoolads = new List<SchoolAd> {
+            //    new SchoolAd()
+            //    {
+            //        Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f34"),
+            //        Title = "Title",
+            //        Description = "Description",
+            //        IsActive = true,
+            //    }
+            //};
+
+            //List<SchoolEvent> schoolCalendar = new List<SchoolEvent> {
+            //    new SchoolEvent()
+            //    {
+            //        Id = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
+            //        Title = "Acquaintance Party",
+            //        Description = "A party for students to get to get to know one another",
+            //        Date = DateTime.Now.AddMonths(1),
+            //        IsActive = true,
+            //    }
+            //};
+
+            //List<SchoolEventMedium> schoolEventMedia = new List<SchoolEventMedium>()
+            //{
+            //    new SchoolEventMedium()
+            //    {
+            //        Id = Guid.NewGuid(),
+            //        SchoolEventId = Guid.Parse("f6d073e1-1948-44ac-a1c7-c85f26457f36"),
+            //        MediaType = Data.Enums.MediaType.ArticleImage,
+            //        Value = "\\schoolevents\\f6d073e1-1948-44ac-a1c7-c85f26457f36\\articleImage.jpg",
+            //        IsActive = true,
+            //    }
+            //};
+
+
+
+            //modelBuilder.Entity<Chat>().HasData(chats);
             modelBuilder.Entity<User>().HasData(users);
-            modelBuilder.Entity<ChatMember>().HasData(chatMembers);
-            modelBuilder.Entity<ChatMessage>().HasData(chatMessages);
+            //modelBuilder.Entity<ChatMember>().HasData(chatMembers);
+            //modelBuilder.Entity<ChatMessage>().HasData(chatMessages);
 
 
-            modelBuilder.Entity<SchoolPost>().HasData(schoolPosts);
-            modelBuilder.Entity<SchoolPostMedium>().HasData(schoolPostMedia);
+            //modelBuilder.Entity<SchoolPost>().HasData(schoolPosts);
+            //modelBuilder.Entity<SchoolPostMedium>().HasData(schoolPostMedia);
 
 
-            modelBuilder.Entity<Research>().HasData(researches);
-            modelBuilder.Entity<ResearchMedium>().HasData(researchMedia);
+            //modelBuilder.Entity<Research>().HasData(researches);
+            //modelBuilder.Entity<ResearchMedium>().HasData(researchMedia);
 
 
-            modelBuilder.Entity<Group>().HasData(groups);
+            //modelBuilder.Entity<Group>().HasData(groups);
 
             
-            modelBuilder.Entity<SchoolAd>().HasData(schoolads);
+            //modelBuilder.Entity<SchoolAd>().HasData(schoolads);
 
 
-            modelBuilder.Entity<SchoolEvent>().HasData(schoolCalendar);
-            modelBuilder.Entity<SchoolEventMedium>().HasData(schoolEventMedia);
+            //modelBuilder.Entity<SchoolEvent>().HasData(schoolCalendar);
+            //modelBuilder.Entity<SchoolEventMedium>().HasData(schoolEventMedia);
 
         }
 

@@ -8,6 +8,8 @@ using Aspose.Html.Converters;
 using Aspose.Html.Saving;
 using Microsoft.Extensions.Hosting;
 using CSMWebsite2023.Services;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace CSMWebsite2023.Web.Pages.Manage.SchoolAds
 {

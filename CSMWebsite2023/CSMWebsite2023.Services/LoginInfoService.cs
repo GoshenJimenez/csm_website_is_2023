@@ -48,5 +48,28 @@ namespace CSMWebsite2023.Services
 
             return Mapper.Map<LoginInfoDto?>(query);
         }
+
+        public async Task<LoginInfoDto?> Update(LoginInfoDto? loginInfoDto)
+        {
+            if (loginInfoDto == null)
+            {
+                return null;
+            }
+
+            var loginInfo = _loginInfoRepository.All().FirstOrDefault(a => a.Id == loginInfoDto.Id);
+
+            if(loginInfo != null)
+            {
+                loginInfo.Value = loginInfoDto.Value;
+                loginInfo.UpdatedAt = DateTime.UtcNow;
+
+                _loginInfoRepository.Update(loginInfo);
+                await _loginInfoRepository.SaveChangesAsync();
+
+                return loginInfoDto;
+            }
+
+            return null;
+        }
     }
 }

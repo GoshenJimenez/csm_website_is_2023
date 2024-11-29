@@ -7,6 +7,8 @@ using Aspose.Html;
 using Aspose.Html.Converters;
 using Aspose.Html.Saving;
 using Microsoft.Extensions.Hosting;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.PixelFormats;
 
 namespace CSMWebsite2023.Web.Pages.Manage.SchoolPosts
 {

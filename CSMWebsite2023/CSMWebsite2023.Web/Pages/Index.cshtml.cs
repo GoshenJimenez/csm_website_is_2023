@@ -12,9 +12,11 @@ namespace CSMWebsite2023.Web.Pages
             _logger = logger;
         }
 
+
+
         public void OnGet()
         {
-
+  
         }
     }
 }

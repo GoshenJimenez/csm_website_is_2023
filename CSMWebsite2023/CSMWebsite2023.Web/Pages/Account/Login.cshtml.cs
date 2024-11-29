@@ -30,7 +30,7 @@ namespace CSMWebsite2023.Web.Pages.Account
         {
         }
 
-        public void OnPost()
+        public async void OnPost()
         {
             var user = _userService.GetUserByEmail(this.EmailAddress);
 
@@ -53,6 +53,8 @@ namespace CSMWebsite2023.Web.Pages.Account
                             if (result == true)
                             {
                                 //Tama yung password
+
+
                             }
                             else
                             {
@@ -63,6 +65,8 @@ namespace CSMWebsite2023.Web.Pages.Account
                                 if (loginAttemptInfo != null)
                                 {
                                     attempts = int.Parse(loginAttemptInfo.Value!) + 1;
+
+                                    loginAttemptInfo.Value = attempts.ToString();
 
                                     if (attempts > 3)
                                     {
@@ -78,16 +82,18 @@ namespace CSMWebsite2023.Web.Pages.Account
                                         Key = "loginattempt",
                                         Value = attempts.ToString()
                                     };
-
-                                    //Mali ang password
                                 }
 
+                               await _loginInfoService.Update(loginAttemptInfo);
+                               await _loginInfoService.Update(accountStatusInfo);
                             }
                         }
                     }
                     else
                     {
                         //Inactive account
+
+
                     }
                 }            
             }
