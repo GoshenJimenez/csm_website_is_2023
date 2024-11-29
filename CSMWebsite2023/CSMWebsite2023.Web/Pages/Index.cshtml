@@ -7,3 +7,12 @@
 <div class="text-center">
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@{
+    var userName = HttpContext.Session.GetString("UserName");
+
+    if (!string.IsNullOrEmpty(userName))
+    {
+        <p>Welcome <strong>@userName</strong>.</p>
+    }
+}

@@ -30,7 +30,7 @@ namespace CSMWebsite2023.Web.Pages.Account
         {
         }
 
-        public async void OnPost()
+        public async Task<IActionResult> OnPost()
         {
             var user = _userService.GetUserByEmail(this.EmailAddress);
 
@@ -53,8 +53,10 @@ namespace CSMWebsite2023.Web.Pages.Account
                             if (result == true)
                             {
                                 //Tama yung password
+                                HttpContext.Session.SetString("UserName", user.FirstName + " " + user.LastName);
+                                HttpContext.Session.SetString("EmailAddress", user.EmailAddress!);
 
-
+                                return RedirectPermanent("~/index");                             
                             }
                             else
                             {
@@ -86,6 +88,7 @@ namespace CSMWebsite2023.Web.Pages.Account
 
                                await _loginInfoService.Update(loginAttemptInfo);
                                await _loginInfoService.Update(accountStatusInfo);
+
                             }
                         }
                     }
@@ -97,6 +100,8 @@ namespace CSMWebsite2023.Web.Pages.Account
                     }
                 }            
             }
+
+            return Page();
         }
     }
 }

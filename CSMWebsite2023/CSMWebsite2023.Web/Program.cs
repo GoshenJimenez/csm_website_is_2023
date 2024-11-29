@@ -31,6 +31,17 @@ builder.Services.AddAutoMapper(typeof(Program), typeof(IService));
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".CSMWebsite2023.session";
+    options.IdleTimeout = TimeSpan.FromSeconds(100);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,6 +58,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapRazorPages();
 
