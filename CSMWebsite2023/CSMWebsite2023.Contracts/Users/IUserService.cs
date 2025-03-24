@@ -11,5 +11,6 @@ namespace CSMWebsite2023.Contracts.Users
         List<UserDto>? GetUsers();  
 
         UserDto? GetUserByEmail(string? emailAddress = null);
+
     }
 }

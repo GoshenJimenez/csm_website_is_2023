@@ -13,5 +13,7 @@ namespace CSMWebsite2023.Contracts.LoginInfo
         LoginInfoDto? GetPassword(Guid? userId);
 
         Task<LoginInfoDto?> Update(LoginInfoDto? loginInfoDto);
-    }
+
+        LoginInfoDto? GetRole(Guid? userId);
+	}
 }

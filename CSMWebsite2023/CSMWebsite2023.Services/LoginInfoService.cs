@@ -71,5 +71,17 @@ namespace CSMWebsite2023.Services
 
             return null;
         }
-    }
+
+        public LoginInfoDto? GetRole(Guid? userId)
+        {
+			if (userId == null)
+			{
+				return null;
+			}
+
+			var query = _loginInfoRepository.All().FirstOrDefault(a => a.UserId == userId && a.Key != null && a.Key.ToLower() == "role");
+
+			return Mapper.Map<LoginInfoDto?>(query);
+		}
+	}
 }

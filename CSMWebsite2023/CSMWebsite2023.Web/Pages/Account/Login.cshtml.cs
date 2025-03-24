@@ -52,11 +52,22 @@ namespace CSMWebsite2023.Web.Pages.Account
 
                             if (result == true)
                             {
-                                //Tama yung password
-                                HttpContext.Session.SetString("UserName", user.FirstName + " " + user.LastName);
+
+
+                                var roleInfo = loginInfos.FirstOrDefault(a => a.Key != null && a.Key.ToLower() == "role");
+
+
+								//Tama yung password
+								HttpContext.Session.SetString("UserId", user.Id.ToString()!);
+								HttpContext.Session.SetString("UserName", user.FirstName + " " + user.LastName);
                                 HttpContext.Session.SetString("EmailAddress", user.EmailAddress!);
 
-                                return RedirectPermanent("~/index");                             
+                                if (roleInfo != null)
+                                {
+                                    HttpContext.Session.SetString("Role", roleInfo.Value.ToString()!);
+                                }
+
+								return RedirectPermanent("~/index");                             
                             }
                             else
                             {
