@@ -8,9 +8,9 @@ namespace CSMWebsite2023.Contracts.Users
 {
     public interface IUserService : IService
     {
-        List<UserDto>? GetUsers();  
-
-        UserDto? GetUserByEmail(string? emailAddress = null);
-
+        List<UserDto>? GetUsers();
+        UserDto? GetUserById(Guid? id);
+		UserDto? GetUserByEmail(string? emailAddress = null);
+        UserDto? UpdateUserProfile(UserDto? user);
     }
 }

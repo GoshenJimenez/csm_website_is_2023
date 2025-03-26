@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
@@ -45,5 +46,44 @@ namespace CSMWebsite2023.Services
 
             return Mapper.Map<UserDto?>(query);
         }
-    }
+
+        public UserDto? GetUserById(Guid? id)
+        {
+			if (id == null)
+			{
+				return null;
+			}
+
+			var query = _userRepository.All().FirstOrDefault(a => a.Id != null && a.Id == id);
+
+			return Mapper.Map<UserDto?>(query);
+		}
+
+        public UserDto? UpdateUserProfile(UserDto? userDto)
+        {
+            if (userDto == null)
+            {
+                return null;
+            }
+
+            if (userDto.Id == null || string.IsNullOrEmpty(userDto.FirstName) || string.IsNullOrEmpty(userDto.LastName))
+            {
+				return null;
+			}
+
+			var user = _userRepository.All().FirstOrDefault(a => a.Id != null && a.Id == userDto.Id);
+
+            if (user != null)
+            {
+                user.FirstName = userDto.FirstName;
+                user.LastName = userDto.LastName;
+
+                _userRepository.Update(user);
+
+				return Mapper.Map<UserDto?>(user); 
+            }
+
+            return null;
+		}
+	}
 }
