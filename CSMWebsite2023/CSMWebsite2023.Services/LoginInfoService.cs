@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CSMWebsite2023.Contracts.LoginInfo;
 using System.Net.Mail;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CSMWebsite2023.Services
 {
@@ -82,6 +83,54 @@ namespace CSMWebsite2023.Services
 			var query = _loginInfoRepository.All().FirstOrDefault(a => a.UserId == userId && a.Key != null && a.Key.ToLower() == "role");
 
 			return Mapper.Map<LoginInfoDto?>(query);
+		}
+
+		public async Task<OperationDto<LoginInfoDto?>?> ChangePassword(ChangePasswordDto? changePasswordDto)
+        {
+            if (changePasswordDto == null)
+            {
+				return new OperationDto<LoginInfoDto?>
+				{
+					Status = OpStatus.Fail,
+					Message = "New password and UserId are required"
+				};
+			}
+
+
+            if(string.IsNullOrEmpty(changePasswordDto.NewPassword) || changePasswordDto.UserId == null)
+			{
+				return new OperationDto<LoginInfoDto?>
+				{
+					Status = OpStatus.Fail,
+					Message = "New password and UserId are required"
+				};
+            }
+
+			var passwordLoginInfo = _loginInfoRepository.All().FirstOrDefault(a => a.UserId == changePasswordDto.UserId && a.Key != null && a.Key.ToLower() == "password");
+
+
+            if (passwordLoginInfo != null)
+            {
+				passwordLoginInfo.Value = changePasswordDto.NewPassword;
+				passwordLoginInfo.UpdatedAt = DateTime.UtcNow;
+
+				_loginInfoRepository.Update(passwordLoginInfo);
+				await _loginInfoRepository.SaveChangesAsync();
+
+                return new OperationDto<LoginInfoDto?>
+                {
+                    Status = OpStatus.Ok,
+                    Message = "Password changed successfully",
+                    ReferenceId = passwordLoginInfo.Id,
+                    ReferenceData = Mapper.Map<LoginInfoDto?>(passwordLoginInfo)
+                };
+			}
+
+            return new OperationDto<LoginInfoDto?>
+            {
+                Status = OpStatus.Fail,
+                Message = "No record found for password"
+            };
 		}
 	}
 }
